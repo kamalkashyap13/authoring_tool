@@ -6,6 +6,8 @@ from django.db.models import Q
 
 #import en_core_web_sm
 from textstat.textstat import textstat
+import datetime
+today = datetime.date.today()
 
 
 def index(request):
@@ -61,7 +63,7 @@ def question_add(request):
         option2 = request.POST.get('option2')
         option3 = request.POST.get('option3')
         option4 = request.POST.get('option4')
-        option_choice = request.POST.get('option_choice')
+        option_choice = int(request.POST.get('option_choice'))
         level_no = int(request.POST.get('level_no'))
 
         level_detail = Level.objects.filter(Q(levels=level_no))[0]
@@ -75,25 +77,39 @@ def question_add(request):
         score = textstat.flesch_reading_ease(question_txt)
         #nlp = en_core_web_sm.load()
         #doc = nlp(question_txt)
+        question_vocab = question_txt.lower().strip().split()
+        # for token in doc:
+        #     if token.pos_ in ["VERB","NOUN","ADJ","ADV"]:
+        #         lem = token.lemma_.lower()
+        #         if lem in all_vocab:
+        #             good=1
+        #         else:
+        #             return JsonResponse({"score": 1,"word":lem}, safe=False)
+        for wor in question_vocab:
+            if wor not in all_vocab:
+                return JsonResponse({"score": 0, "word": wor}, safe=False)
 
-        for token in doc:
-            if token.pos_ in ["VERB","NOUN","ADJ","ADV"]:
-                lem = token.lemma_.lower()
-                if lem in all_vocab:
-                    good=1
-                else:
-                    return JsonResponse({"score": 1,"word":lem}, safe=False)
+        LevelQuestion.objects.create(level=level_detail,question_text=question_txt, choice1=option1,
+                                     choice2=option2, choice3=option3, choice4=option4,
+                                     correct=option_choice, feedback="",date=today
+                                     )
         return JsonResponse({"score": 1}, safe=False)
 
 
 
-# front end
+
 # verify, show error  - dependency - django 2.4, pip install textstat, spacy
 # pip install -U spacy, python -m spacy download en
+
+#immediate
 # show question for edit
 # add data
-# git
-# live
-# domain
+
 
 #cumulative vocab
+
+
+#move to spacy, move to new ec2 instance, 16.04
+#requirements.txt
+#add webserver - nginx, ?, mysql
+#move to react
