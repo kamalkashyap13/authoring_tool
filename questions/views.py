@@ -4,7 +4,7 @@ from django.http import HttpResponse, JsonResponse
 from .models import Level, LevelWords, LevelQuestion
 from django.db.models import Q
 
-import en_core_web_sm
+#import en_core_web_sm
 from textstat.textstat import textstat
 
 
@@ -73,8 +73,8 @@ def question_add(request):
             all_vocab.append(vocab_detail[i].word)
 
         score = textstat.flesch_reading_ease(question_txt)
-        nlp = en_core_web_sm.load()
-        doc = nlp(question_txt)
+        #nlp = en_core_web_sm.load()
+        #doc = nlp(question_txt)
 
         for token in doc:
             if token.pos_ in ["VERB","NOUN","ADJ","ADV"]:
