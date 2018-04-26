@@ -15,11 +15,11 @@ class LevelWords(models.Model):
 class LevelQuestion(models.Model):
     level = models.ForeignKey(Level, on_delete=models.CASCADE,)
     question_text = models.TextField(unique=True)  # only noun, verb, adjective, adverb
-    choice1 = models.TextField(unique=True)
-    choice2 = models.TextField(unique=True)
-    choice3 = models.TextField(unique=True)
-    choice4 = models.TextField(unique=True)
+    choice1 = models.TextField()
+    choice2 = models.TextField()
+    choice3 = models.TextField()
+    choice4 = models.TextField()
     correct = models.IntegerField() #1,2,3,4
-    feedback = models.TextField(blank=True,unique=True)
+    feedback = models.TextField(blank=True)
     date = models.DateField()
     #modified_date = models.DateField(blank=True)

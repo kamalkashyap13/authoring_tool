@@ -3,7 +3,7 @@ from django.template import loader
 from django.http import HttpResponse, JsonResponse
 from .models import Level, LevelWords, LevelQuestion
 from django.db.models import Q
-
+import nltk
 #import en_core_web_sm
 from textstat.textstat import textstat
 import datetime
@@ -36,7 +36,7 @@ def index(request):
         vocab_dict[level_name].append(word)
 
     for i in range(len(ques_detail)):
-        level_no = vocab_detail[i].level.levels
+        level_no = ques_detail[i].level.levels
         level_name = "Level " + str(level_no)
         ques_dict[level_name]+=1
 
@@ -59,13 +59,13 @@ def sample(request):
 def question_add(request):
     if request.method == 'POST':
         question_txt = request.POST.get('question_txt')
+        question_content = question_txt
         option1 = request.POST.get('option1')
         option2 = request.POST.get('option2')
         option3 = request.POST.get('option3')
         option4 = request.POST.get('option4')
         option_choice = int(request.POST.get('option_choice'))
         level_no = int(request.POST.get('level_no'))
-
         level_detail = Level.objects.filter(Q(levels=level_no))[0]
         vocab_detail = LevelWords.objects.filter(Q(level=level_detail))
         all_vocab =[]
@@ -73,27 +73,29 @@ def question_add(request):
         level_high = level_detail.reading_range_high
         for i in range(len(vocab_detail)):
             all_vocab.append(vocab_detail[i].word)
-
         score = textstat.flesch_reading_ease(question_txt)
-        #nlp = en_core_web_sm.load()
-        #doc = nlp(question_txt)
-        question_vocab = question_txt.lower().strip().split()
-        # for token in doc:
-        #     if token.pos_ in ["VERB","NOUN","ADJ","ADV"]:
-        #         lem = token.lemma_.lower()
-        #         if lem in all_vocab:
-        #             good=1
-        #         else:
-        #             return JsonResponse({"score": 1,"word":lem}, safe=False)
+        print(score)
+        text_with_pos_tag = nltk.word_tokenize(question_txt)
+        question_all_vocab = nltk.pos_tag(text_with_pos_tag)
+        question_vocab = []
+        for i in range(len(question_all_vocab)):
+            print (question_all_vocab)
+            word = question_all_vocab[i][0]
+            pos_tag = question_all_vocab[i][1]
+            if pos_tag in ["JJ","JJR","JJS","NN","NNS","RB","RBR","VB","VBD","VBG","VBZ"]:
+                question_vocab.append(word.lower())
         for wor in question_vocab:
             if wor not in all_vocab:
-                return JsonResponse({"score": 0, "word": wor}, safe=False)
-
+                return JsonResponse({"main": "Question has not been added.", "body": "Please change this word " + wor}, safe=False)
+        if score<level_low:
+            return JsonResponse({"main": "Question has not been added.",
+                                 "body": "Readability score is less than permissible" },
+                                safe=False)
         LevelQuestion.objects.create(level=level_detail,question_text=question_txt, choice1=option1,
                                      choice2=option2, choice3=option3, choice4=option4,
                                      correct=option_choice, feedback="",date=today
                                      )
-        return JsonResponse({"score": 1}, safe=False)
+        return JsonResponse({"main": "Question has been added.", "body": question_content}, safe=False)
 
 
 
@@ -101,15 +103,28 @@ def question_add(request):
 # verify, show error  - dependency - django 2.4, pip install textstat, spacy
 # pip install -U spacy, python -m spacy download en
 
-#immediate
-# show question for edit
-# add data
-
-
-#cumulative vocab
-
 
 #move to spacy, move to new ec2 instance, 16.04
 #requirements.txt
 #add webserver - nginx, ?, mysql
 #move to react
+
+
+#immediate
+#readiability score - low, and above
+# cumulative error
+# show question for edit
+
+# add data
+
+
+        #nlp = en_core_web_sm.load()
+        #doc = nlp(question_txt)
+        # question_vocab = question_txt.lower().strip().split()
+        # for token in doc:
+        #     if token.pos_ in ["VERB","NOUN","ADJ","ADV"]:
+        #         lem = token.lemma_.lower()
+        #         if lem in all_vocab:
+        #             good=1
+        #         else:
+        #             return JsonResponse({"score": 1,"word":lem}, safe=False)

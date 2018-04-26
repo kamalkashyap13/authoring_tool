@@ -5,33 +5,41 @@
   <title>Augli -  Assessment</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <style>
 .body-class{
-  margin-top: 100px;
+  margin-top: 80px;
   text-align: center;
 }
 .level_div{
-  margin-top: 40px;
+  margin-top: 20px;
 
 }
-#vocab-sele{
-  font-size: 21px;
+.level_t_align{
+  margin-left: 40%;
 }
+.level_div_part{
+  text-align: justify;
+
+}
+/* #vocab-sele{
+  font-size: 21px;
+} */
 .ques-add{
   background-color: gray;
-  padding: 20px 60px;
+  padding: 20px 100px;
   margin-bottom: 100px;
   margin-top: 50px;
 
 }
 .label{
-  padding-top: 10px;
-  margin-top: 20px;
+
+  margin-top: 10px;
 }
 .form-control{
   background: black;
@@ -58,6 +66,20 @@
 .question-edit-text:hover {
   background-color: white;
   color: gray;
+}
+</style>
+<style>
+h1{
+  font-size: 28px;
+}
+h2{
+  font-size: 24px;
+}
+h3, p {
+  font-size: 21px;
+}
+h4  {
+  font-size: 18px;
 }
 </style>
 </head>
@@ -94,16 +116,17 @@
         <option value="option14">All Questions</option> -->
       </select>
       <div class="level_div">
-        <h2 id="level_t">Level 1 </h2>
-        <h4>Reading Score ->
+        <!-- <h2 id="level_t">Level 1 </h2> -->
+        <div class="level_t_align">
+        <h4 class="level_div_part">Reading Score :
             <span id="level_read_range"></span>
         </h4>
 
-        <h4>Questions added ->
+        <h4 class="level_div_part">Questions added :
             <span id="level_question_added">  </span>
         </h4>
 
-        <h4>Allowed Vocab ->
+        <h4 class="level_div_part">Level Vocabulary :
             <span>
                 <select id="allow-vocab">
                   <!-- <option value="option1">2018</option> -->
@@ -111,10 +134,20 @@
 
             </span>
         </h4>
+        <h4 class="level_div_part">Cumulative Vocabulary :
+            <span>
+                <select id="Cumulative-allow-vocab">
+                  <!-- <option value="option1">2018</option> -->
+                </select>
+
+            </span>
+        </h4>
+      </div>
 
       </div>
       <div class="ques-add">
           <h3> Add Question </h3>
+          <h6> Choose level and then make question in respective readiability and vocabulary range. </h6>
           <form class="form-align-left">
             <div class="form-group">
               <label for="question-text">Question text:</label>
@@ -273,6 +306,32 @@
 
       </div>
 
+
+      <!-- The Modal -->
+      <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Modal Heading</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+              Modal body..
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <script>
@@ -337,14 +396,16 @@
                 var option2 = $("#question-choice2").val()
                 var option3 =  $("#question-choice3").val()
                 var option4 = $("#question-choice4").val()
-                var option_choice = $("#option-sele").val()//
+                var option_choice = $("#option-sele").val().slice(6)
                 var question_level = $("#outer").val()
                 var level_no = selectedVal.slice(6)
 
-                clean = datacheck(question_txt, option1, option2, option3, option4, option_choice)
+                var clean = datacheck(question_txt, option1, option2, option3, option4, option_choice)
                 if (clean.length!=1){
-                  alert(clean)
-                  $("#question-text").css("background-color", "yellow");
+
+                  $("#"+clean[1]).css("background-color", "yellow");
+                  fill_modal_data("Add the mentioned data",clean[0])
+                  $("#myModal").modal()
                 }
                 else{
                     a = save_question(question_txt, option1, option2, option3, option4, option_choice, level_no);
@@ -378,7 +439,21 @@
                         option.text = option.value = vocav_this_level;
                         select.add(option, 0);
                     }
+                    //
+                    var inde = levels_keys.indexOf(selectedText)
+                     Cumulative_list = []
+                    for (var i=0; i < inde; ++i)  {
+                      Cumulative_list = Cumulative_list.concat(level_vocab_detail[levels_keys[i]])
 
+                    }
+                    var select = document.getElementById("Cumulative-allow-vocab");
+                    for(var i = 0; i < Cumulative_list.length; ++i) {
+                        var vocav_this_level = Cumulative_list[i]
+                        var option = document.createElement('option');
+                        option.text = option.value = vocav_this_level;
+                        select.add(option, 0);
+                    }
+                    //
                     var all_level_ques_no = level_ques_detail[selectedVal];
                     $("#level_question_added").text(all_level_ques_no);
                     //level_read_range
@@ -429,10 +504,15 @@
             contentType:false,
             processData: false,
     				success: function(response) {
-                score = response;
-      
+
+                main = response.main;
+                body = response.body;
+                fill_modal_data(main,body)
+                $("#myModal").modal()
+
             },
     				error: function(xhr) {
+
             }
 
           });
@@ -453,27 +533,32 @@
              return "";
          }
 
+         function fill_modal_data(modaltitle,modalbody) {
+           $(".modal-title").text(modaltitle);
+           $(".modal-body").text(modalbody);
+
+         }
 
 
          function datacheck(question_txt, option1, option2, option3, option4, option_choice) {
            //question_txt = question_txt.trim()
            if (question_txt==""){
-             return "Add question"
+             return ["Add question","question-text"]
            }
            else if(option1=="") {
-               return " Add option 1"
+               return  ["Add option 1","question-choice1"]
            }
            else if(option2=="") {
-               return "Add option 2"
+               return ["Add option 2","question-choice2"]
            }
            else if(option3=="") {
-               return "Add option 3"
+               return ["Add option 3","question-choice3"]
            }
            else if(option4=="") {
-               return "Add option 4"
+               return ["Add option 4","question-choice4"]
            }
-           else if (option_choice ==="select") {
-               return "Provide Correct Answer"
+           else if (option_choice ==="") {
+               return ["Provide Correct Answer","option-sele"]
            }
 
              return "1"
