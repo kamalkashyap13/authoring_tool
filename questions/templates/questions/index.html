@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+  <title>Augli -  Assessment</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<style>
+.body-class{
+  margin-top: 100px;
+  text-align: center;
+}
+.level_div{
+  margin-top: 40px;
+
+}
+#vocab-sele{
+  font-size: 21px;
+}
+.ques-add{
+  background-color: gray;
+  padding: 20px 60px;
+  margin-bottom: 100px;
+  margin-top: 50px;
+
+}
+.label{
+  padding-top: 10px;
+  margin-top: 20px;
+}
+.form-control{
+  background: black;
+}
+.form-align-left{
+  text-align: left;
+}
+</style>
+<style>
+.ques-edit{
+  padding: 10px 20px;
+}
+.question_view{
+  margin-top: 40px;
+  padding: 10px 20px;
+  border-style: solid;
+}
+.question-edit-text {
+  padding: 2px 5px;
+  background-color: gray;
+  color: white;
+}
+
+.question-edit-text:hover {
+  background-color: white;
+  color: gray;
+}
+</style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+    <a class="navbar-brand" href="#">Authoring Tool</a>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#"></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"></a>
+      </li>
+    </ul>
+    </nav>
+    <div class="container body-class">
+      <h1>Augli Assessment</h1>
+
+      <select id="outer">
+        <!-- <option value="option1">Level 1</option>
+        <option value="option3">Level 3</option>
+        <option value="option2">Level 2</option>
+        <option value="option4">Level 4</option>
+        <option value="option5">Level 5</option>
+        <option value="option6">Level 6</option>
+        <option value="option7">Level 7</option>
+        <option value="option8">Level 8</option>
+        <option value="option9">Level 9</option>
+        <option value="option10">Level 10</option>
+        <option value="option11">Level 11</option>
+        <option value="option12">Level 12</option>
+        <option value="option13">Level 13</option>
+        <option value="option14">All Questions</option> -->
+      </select>
+      <div class="level_div">
+        <h2 id="level_t">Level 1 </h2>
+        <h4>Reading Score ->
+            <span id="level_read_range"></span>
+        </h4>
+
+        <h4>Questions added ->
+            <span id="level_question_added">  </span>
+        </h4>
+
+        <h4>Allowed Vocab ->
+            <span>
+                <select id="allow-vocab">
+                  <!-- <option value="option1">2018</option> -->
+                </select>
+
+            </span>
+        </h4>
+
+      </div>
+      <div class="ques-add">
+          <h3> Add Question </h3>
+          <form class="form-align-left">
+            <div class="form-group">
+              <label for="question-text">Question text:</label>
+              <textarea class="form-control" rows="2" id="question-text"></textarea>
+              <br>
+              <label for="question-choice1">Choice 1:</label>
+              <textarea class="form-control" rows="1" id="question-choice1"></textarea>
+              <br>
+              <label for="question-choice2">Choice 2:</label>
+              <textarea class="form-control" rows="1" id="question-choice2"></textarea>
+              <br>
+              <label for="question-choice3">Choice 3:</label>
+              <textarea class="form-control" rows="1" id="question-choice3"></textarea>
+              <br>
+              <label for="question-choice4">Choice 4:</label>
+              <textarea class="form-control" rows="1" id="question-choice4"></textarea>
+              <br>
+              <label for="option-sele">Correct Answer:</label>
+              <br>
+              <select class="option-sele" id="option-sele">
+                <option value="select">Select</option>
+                <option value="choice1">Choice 1</option>
+                <option value="choice2">Choice 2</option>
+                <option value="choice3">Choice 3</option>
+                <option value="choice4">Choice 4</option>
+              </select>
+            </div>
+          </form>
+          <button type="submit" id="sub-button"  class="btn btn-primary">Submit</button>
+      </div>
+
+
+      <div class="ques-edit">
+        <h3> Edit Question </h3>
+        <div class='question_view'>
+          <h4 id="level_ques_edit">Question 1 From Level 1 </h4>
+          <form class="form-align-left">
+            <div class="form-group">
+              <label for="question-text">Question text:</label>
+              <p class='question-edit-text' contenteditable="true">
+                The race for Fortis Healthcare Limited has intensified with the company receiving an unsolicited non-binding expression of interest from Fosun Health Holdings Limited, a wholly-owned subsidiary of Fosun International Limited.
+              </p>
+              <label for="question-text">Choice 1:</label>
+              <p class='question-edit-text' contenteditable="true">
+                Limited
+              </p>
+              <label for="question-text">Choice 2:</label>
+              <p class='question-edit-text' contenteditable="true">
+                Healthcare
+              </p>
+              <label for="question-text">Choice 3:</label>
+              <p class='question-edit-text' contenteditable="true">
+                receiving
+              </p>
+              <label for="question-text">Choice 4:</label>
+              <p class='question-edit-text' contenteditable="true">
+                expression
+              </p>
+              <label for="question-text">Correct Answer:</label>
+              <p>
+              <select id="vocab-sele">
+                <option value="choice1">Choice 1</option>
+                <option value="choice2">Choice 2</option>
+                <option value="choice3">Choice 3</option>
+                <option value="choice4">Choice 4</option>
+              </select>
+            </p>
+
+
+            </div>
+          </form>
+
+        </div>
+
+
+        <div class='question_view'>
+          <h4 id="level_ques_edit">Question 2 From Level 1 </h4>
+          <form class="form-align-left">
+            <div class="form-group">
+              <label for="question-text">Question text:</label>
+              <p class='question-edit-text' contenteditable="true">
+                The race for Fortis Healthcare Limited has intensified with the company receiving an unsolicited non-binding expression of interest from Fosun Health Holdings Limited, a wholly-owned subsidiary of Fosun International Limited.
+              </p>
+              <label for="question-text">Choice 1:</label>
+              <p class='question-edit-text' contenteditable="true">
+                Limited
+              </p>
+              <label for="question-text">Choice 2:</label>
+              <p class='question-edit-text' contenteditable="true">
+                Healthcare
+              </p>
+              <label for="question-text">Choice 3:</label>
+              <p class='question-edit-text' contenteditable="true">
+                receiving
+              </p>
+              <label for="question-text">Choice 4:</label>
+              <p class='question-edit-text' contenteditable="true">
+                expression
+              </p>
+              <label for="question-text">Correct Answer:</label>
+              <p>
+              <select id="vocab-sele">
+                <option value="choice1">Choice 1</option>
+                <option value="choice2">Choice 2</option>
+                <option value="choice3">Choice 3</option>
+                <option value="choice4">Choice 4</option>
+              </select>
+            </p>
+
+
+            </div>
+          </form>
+
+        </div>
+        <div class='question_view'>
+          <h4 id="level_ques_edit">Question 1 From Level 2 </h4>
+          <form class="form-align-left">
+            <div class="form-group">
+              <label for="question-text">Question text:</label>
+              <p class='question-edit-text' contenteditable="true">
+                The race for Fortis Healthcare Limited has intensified with the company receiving an unsolicited non-binding expression of interest from Fosun Health Holdings Limited, a wholly-owned subsidiary of Fosun International Limited.
+              </p>
+              <label for="question-text">Choice 1:</label>
+              <p class='question-edit-text' contenteditable="true">
+                Limited
+              </p>
+              <label for="question-text">Choice 2:</label>
+              <p class='question-edit-text' contenteditable="true">
+                Healthcare
+              </p>
+              <label for="question-text">Choice 3:</label>
+              <p class='question-edit-text' contenteditable="true">
+                receiving
+              </p>
+              <label for="question-text">Choice 4:</label>
+              <p class='question-edit-text' contenteditable="true">
+                expression
+              </p>
+              <label for="question-text">Correct Answer:</label>
+              <p>
+              <select id="vocab-sele">
+
+                <option value="choice1">Choice 1</option>
+                <option value="choice2">Choice 2</option>
+                <option value="choice3">Choice 3</option>
+                <option value="choice4">Choice 4</option>
+              </select>
+            </p>
+
+
+            </div>
+          </form>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+    <script>
+    selectedVal = "option1";
+    selectedText = "Level 1";
+    level_range_detail = {{ level_range_detail | safe }};
+    level_vocab_detail = {{ level_vocab_detail | safe }};
+    level_ques_detail = {{ level_ques_detail | safe }};
+    levels_keys = Object.keys(level_range_detail).sort();
+
+    window.onload = function () {
+
+        var select = document.getElementById("outer");
+        for(var i = 0; i < levels_keys.length; ++i) {
+          levels_keys_name = levels_keys[i]
+          var option = document.createElement('option');
+          option.text = option.value = levels_keys_name;
+          select.add(option);
+        }
+
+        var option = document.createElement('option');
+        option.text = "All Questions";
+        option.value = "option14";
+        select.add(option);
+
+        //
+        all_level_vocab = level_vocab_detail["Level 1"];
+        var select = document.getElementById("allow-vocab");
+        for(var i = 0; i < all_level_vocab.length; ++i) {
+            var vocav_this_level = all_level_vocab[i]
+            var option = document.createElement('option');
+            option.text = option.value = vocav_this_level;
+            select.add(option, 0);
+        }
+        //
+        var all_level_ques_no = level_ques_detail["Level 1"];
+        $("#level_question_added").text(all_level_ques_no);
+        //level_read_range
+        var all_level_range_no = level_range_detail["Level 1"]["range"];
+        $("#level_read_range").text(all_level_range_no);
+
+
+    };
+
+  </script>
+  <script>
+
+    $(document).ready(function () {
+
+     // $(".ques-edit").hide() level_div
+      $(".ques-edit").hide();
+      //$(".ques-add").hide();
+        $('#outer').change(function () {
+        v = $(this).val().slice(6)
+        $("#level_t").text("Level" + v)
+      })
+
+           $("#sub-button").on("click", function(){
+
+                var question_txt = $("#question-text").val()
+                var option1 = $("#question-choice1").val()
+                var option2 = $("#question-choice2").val()
+                var option3 =  $("#question-choice3").val()
+                var option4 = $("#question-choice4").val()
+                var option_choice = $("#option-sele").val()//
+                var question_level = $("#outer").val()
+                var level_no = selectedVal.slice(6)
+
+                clean = datacheck(question_txt, option1, option2, option3, option4, option_choice)
+                if (clean.length!=1){
+                  alert(clean)
+                  $("#question-text").css("background-color", "yellow");
+                }
+                else{
+                    a = save_question(question_txt, option1, option2, option3, option4, option_choice, level_no);
+                }
+
+                //backendquery
+
+            });
+
+            $("#outer").change(function() {
+                selectedVal = this.value;
+                selectedText = this.options[this.selectedIndex].text;
+                $("#allow-vocab").empty();
+
+                if (selectedVal=="option14"){
+                    $(".level_div").hide()
+                    $(".ques-edit").show();
+                    $(".ques-add").hide();
+                }
+                else
+                {
+                    $(".level_div").show()
+                    $(".ques-edit").hide();
+                    $(".ques-add").show();
+
+                    all_level_vocab = level_vocab_detail[selectedVal];
+                    var select = document.getElementById("allow-vocab");
+                    for(var i = 0; i < all_level_vocab.length; ++i) {
+                        var vocav_this_level = all_level_vocab[i]
+                        var option = document.createElement('option');
+                        option.text = option.value = vocav_this_level;
+                        select.add(option, 0);
+                    }
+
+                    var all_level_ques_no = level_ques_detail[selectedVal];
+                    $("#level_question_added").text(all_level_ques_no);
+                    //level_read_range
+                    var all_level_range_no = level_range_detail[selectedVal]["range"];
+                    $("#level_read_range").text(all_level_range_no);
+
+
+
+                  }
+
+
+            });
+
+
+
+
+
+
+
+
+      //
+
+
+
+    });
+ </script>
+
+<script>
+    function save_question(question_txt, option1, option2, option3, option4, option_choice,level_no){
+    		formdata=new FormData();
+    		formdata.append("question_txt",question_txt);
+    		formdata.append("option1",option1);
+        formdata.append("option2",option2);
+        formdata.append("option3",option3);
+        formdata.append("option4",option4);
+        formdata.append("option_choice",option_choice);
+        formdata.append("level_no",level_no);
+    			$.ajax({
+
+
+            beforeSend: function (xhr, settings) {
+                        xhr.setRequestHeader("X-CSRFToken", getCookie("csrftoken"));
+            },
+    				url: "/questions/add-question",
+    				data:formdata,
+            cache: false,
+    				type: "POST",
+            contentType:false,
+            processData: false,
+    				success: function(response) {
+                score = response;
+      
+            },
+    				error: function(xhr) {
+            }
+
+          });
+
+    	}
+
+
+      function getCookie(c_name) {
+             if(document.cookie.length > 0) {
+                 c_start = document.cookie.indexOf(c_name + "=");
+                 if(c_start != -1) {
+                     c_start = c_start + c_name.length + 1;
+                     c_end = document.cookie.indexOf(";", c_start);
+                     if(c_end == -1) c_end = document.cookie.length;
+                     return unescape(document.cookie.substring(c_start,c_end));
+                 }
+             }
+             return "";
+         }
+
+
+
+         function datacheck(question_txt, option1, option2, option3, option4, option_choice) {
+           //question_txt = question_txt.trim()
+           if (question_txt==""){
+             return "Add question"
+           }
+           else if(option1=="") {
+               return " Add option 1"
+           }
+           else if(option2=="") {
+               return "Add option 2"
+           }
+           else if(option3=="") {
+               return "Add option 3"
+           }
+           else if(option4=="") {
+               return "Add option 4"
+           }
+           else if (option_choice ==="select") {
+               return "Provide Correct Answer"
+           }
+
+             return "1"
+         }
+
+
+</script>
+
+</body>
+</html>
