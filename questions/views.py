@@ -58,7 +58,7 @@ def sample(request):
 
 def question_add(request):
     if request.method == 'POST':
-        question_txt = request.POST.get('question_txt')
+        question_txt = request.POST.get('question_txt').strip()
         question_content = question_txt
         option1 = request.POST.get('option1')
         option2 = request.POST.get('option2')
@@ -68,13 +68,20 @@ def question_add(request):
         level_no = int(request.POST.get('level_no'))
         level_detail = Level.objects.filter(Q(levels=level_no))[0]
         vocab_detail = LevelWords.objects.filter(Q(level=level_detail))
+        all_vocab_detail = LevelWords.objects.filter(level__lt=level_detail)
+        # print (all_vocab_detail[1].word)
+        # print (11)
         all_vocab =[]
+        cumulative_vocab =[]
         level_low = level_detail.reading_range_low
         level_high = level_detail.reading_range_high
         for i in range(len(vocab_detail)):
             all_vocab.append(vocab_detail[i].word)
+        for i in range(len(all_vocab_detail)):
+            cumulative_vocab.append(all_vocab_detail[i].word)
         score = textstat.flesch_reading_ease(question_txt)
-        print(score)
+        print (question_txt)
+        print (score)
         text_with_pos_tag = nltk.word_tokenize(question_txt)
         question_all_vocab = nltk.pos_tag(text_with_pos_tag)
         question_vocab = []
@@ -84,6 +91,7 @@ def question_add(request):
             pos_tag = question_all_vocab[i][1]
             if pos_tag in ["JJ","JJR","JJS","NN","NNS","RB","RBR","VB","VBD","VBG","VBZ"]:
                 question_vocab.append(word.lower())
+        all_vocab = all_vocab + cumulative_vocab
         for wor in question_vocab:
             if wor not in all_vocab:
                 return JsonResponse({"main": "Question has not been added.", "body": "Please change this word " + wor}, safe=False)
@@ -100,20 +108,14 @@ def question_add(request):
 
 
 
-# verify, show error  - dependency - django 2.4, pip install textstat, spacy
-# pip install -U spacy, python -m spacy download en
 
 
-#move to spacy, move to new ec2 instance, 16.04
-#requirements.txt
-#add webserver - nginx, ?, mysql
-#move to react
 
 
-#immediate
-#readiability score - low, and above
-# cumulative error
-# show question for edit
+
+
+#immediate -  http://textminingonline.com/dive-into-nltk-part-iv-stemming-and-lemmatization
+
 
 # add data
 
@@ -128,3 +130,12 @@ def question_add(request):
         #             good=1
         #         else:
         #             return JsonResponse({"score": 1,"word":lem}, safe=False)
+
+# verify, show error  - dependency - django 2.4, pip install textstat, spacy
+# pip install -U spacy, python -m spacy download en
+
+
+#move to spacy, move to new ec2 instance, 16.04
+#requirements.txt
+#add webserver - nginx, ?, mysql
+#move to react
