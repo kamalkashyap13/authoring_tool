@@ -41,9 +41,9 @@
 
   margin-top: 10px;
 }
-.form-control{
+/* .form-control{
   background: black;
-}
+} */
 .form-align-left{
   text-align: left;
 }
@@ -82,6 +82,60 @@ h4  {
   font-size: 18px;
 }
 </style>
+
+<style>
+.dropbtn, .dropbtn2 {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus, .dropbtn2:hover, .dropbtn2:focus {
+    background-color: #3e8e41;
+}
+
+#myInput2, #myInput {
+    border-box: box-sizing;
+    background-image: url('searchicon.png');
+    background-position: 14px 12px;
+    background-repeat: no-repeat;
+    font-size: 16px;
+    padding: 14px 20px 12px 45px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+}
+
+#myInput2:focus, #myInput:focus {outline: 3px solid #ddd;}
+
+.dropdown2, dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content2, .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f6f6f6;
+    min-width: 230px;
+    overflow: auto;
+    border: 1px solid #ddd;
+    z-index: 1;
+}
+
+.dropdown-content2 li, .dropdown-content li {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown li:hover, .dropdown2 li:hover  {background-color: #ddd}
+
+.show, .show2 {display:block;}
+</style>
 </head>
 
 <body>
@@ -100,6 +154,7 @@ h4  {
       <h1>Augli Assessment</h1>
 
       <select id="outer">
+
         <!-- <option value="option1">Level 1</option>
         <option value="option3">Level 3</option>
         <option value="option2">Level 2</option>
@@ -125,22 +180,45 @@ h4  {
         <h4 class="level_div_part">Questions added :
             <span id="level_question_added">  </span>
         </h4>
-
+<!--
         <h4 class="level_div_part">Level Vocabulary :
             <span>
+
                 <select id="allow-vocab">
-                  <!-- <option value="option1">2018</option> -->
+
+                  <option value="option1">2018</option>
                 </select>
 
+
             </span>
+
         </h4>
         <h4 class="level_div_part">Cumulative Vocabulary :
             <span>
                 <select id="Cumulative-allow-vocab">
-                  <!-- <option value="option1">2018</option> -->
+                  <option value="option1">2018</option>
                 </select>
 
             </span>
+        </h4> -->
+        <h4 class="level_div_part">
+
+          <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">Allowed level Vocabulary</button>
+            <div id="myDropdown" class="dropdown-content">
+              <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+            </div>
+            </div>
+        </h4>
+
+        <h4 class="level_div_part">
+
+          <div class="dropdown2">
+            <button onclick="myFunction2()" class="dropbtn2">Allowed Cumulative Vocabulary</button>
+            <div id="myDropdown2" class="dropdown-content2">
+              <input type="text" placeholder="Search.." id="myInput2" onkeyup="filterFunction2()">
+            </div>
+            </div>
         </h4>
       </div>
 
@@ -150,25 +228,37 @@ h4  {
           <h6> Choose level and then make question in respective readiability and vocabulary range. </h6>
           <form class="form-align-left">
             <div class="form-group">
-              <label for="question-text">Question text:</label>
-              <textarea class="form-control" rows="2" id="question-text"></textarea>
+              <!-- <label for="question-type">Question Type</label> -->
+              <select class="" id="question-type">
+                <option value="select">Question Type</option>
+                <option value="type1">Comprehension</option>
+                <option value="type2">Vocabulary</option>
+              </select>
               <br>
-              <label for="question-choice1">Choice 1:</label>
-              <textarea class="form-control" rows="1" id="question-choice1"></textarea>
               <br>
-              <label for="question-choice2">Choice 2:</label>
-              <textarea class="form-control" rows="1" id="question-choice2"></textarea>
+              <!-- <label for="question-text">Question text:</label> -->
+              <textarea class="form-control" placeholder="Question text .." rows="2" id="question-text"></textarea>
+                <br>
+              <!-- <br>
+              <label for="question-choice1">Choice 1:</label> -->
+              <textarea class="form-control" placeholder="Choice 1 .." rows="1" id="question-choice1"></textarea>
               <br>
-              <label for="question-choice3">Choice 3:</label>
-              <textarea class="form-control" rows="1" id="question-choice3"></textarea>
+              <!-- <br>
+              <label for="question-choice2">Choice 2:</label> -->
+              <textarea class="form-control" placeholder="Choice 2 .." rows="1" id="question-choice2"></textarea>
               <br>
-              <label for="question-choice4">Choice 4:</label>
-              <textarea class="form-control" rows="1" id="question-choice4"></textarea>
+              <!-- <br>
+              <label for="question-choice3">Choice 3:</label> -->
+              <textarea class="form-control" placeholder="Choice 3 .." rows="1" id="question-choice3"></textarea>
               <br>
-              <label for="option-sele">Correct Answer:</label>
+              <!-- <br>
+              <label for="question-choice4">Choice 4:</label> -->
+              <textarea class="form-control" placeholder="Choice 4 .." rows="1" id="question-choice4"></textarea>
               <br>
+              <!-- <label for="option-sele">Correct Answer:</label>
+              <br> -->
               <select class="option-sele" id="option-sele">
-                <option value="select">Select</option>
+                <option value="select">Correct Answer</option>
                 <option value="choice1">Choice 1</option>
                 <option value="choice2">Choice 2</option>
                 <option value="choice3">Choice 3</option>
@@ -333,7 +423,51 @@ h4  {
       </div>
 
     </div>
+    <script>
+    /* When the user clicks on the button,
+    toggle between hiding and showing the dropdown content */
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+        $("#myDropdown2").attr("class","dropdown-content2");
+    }
 
+    function filterFunction() {
+        var input, filter, ul, li, a, i;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        div = document.getElementById("myDropdown");
+        a = div.getElementsByTagName("li");
+        for (i = 0; i < a.length; i++) {
+            if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                a[i].style.display = "";
+            } else {
+                a[i].style.display = "none";
+            }
+        }
+    }
+    //
+
+    function myFunction2() {
+        document.getElementById("myDropdown2").classList.toggle("show2");
+        $("#myDropdown").attr("class","dropdown-content");
+
+    }
+
+    function filterFunction2() {
+        var input, filter, ul, li, a, i;
+        input = document.getElementById("myInput2");
+        filter = input.value.toUpperCase();
+        div = document.getElementById("myDropdown2");
+        a = div.getElementsByTagName("li");
+        for (i = 0; i < a.length; i++) {
+            if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                a[i].style.display = "";
+            } else {
+                a[i].style.display = "none";
+            }
+        }
+    }
+    </script>
     <script>
     selectedVal = "option1";
     selectedText = "Level 1";
@@ -359,14 +493,25 @@ h4  {
 
         //
         all_level_vocab = level_vocab_detail["Level 1"];
-        var select = document.getElementById("allow-vocab");
+        all_level_vocab.reverse();
+        // var select = document.getElementById("allow-vocab");
+        // for(var i = 0; i < all_level_vocab.length; ++i) {
+        //     var vocav_this_level = all_level_vocab[i]
+        //     var option = document.createElement('option');
+        //     option.text = option.value = vocav_this_level;
+        //     select.add(option, 0);
+        // }
+        //
         for(var i = 0; i < all_level_vocab.length; ++i) {
             var vocav_this_level = all_level_vocab[i]
-            var option = document.createElement('option');
-            option.text = option.value = vocav_this_level;
-            select.add(option, 0);
+            var option = document.createElement('li');
+            option.textContent = vocav_this_level;
+            $("#myInput").after(option);
         }
+
         //
+
+
         var all_level_ques_no = level_ques_detail["Level 1"];
         $("#level_question_added").text(all_level_ques_no);
         //level_read_range
@@ -390,17 +535,17 @@ h4  {
       })
 
            $("#sub-button").on("click", function(){
+                var question_type = $("#question-type").val()
+                var question_txt = $("#question-text").val();
+                var option1 = $("#question-choice1").val();
+                var option2 = $("#question-choice2").val();
+                var option3 =  $("#question-choice3").val();
+                var option4 = $("#question-choice4").val();
+                var option_choice = $("#option-sele").val().slice(6);
+                var question_level = $("#outer").val();
+                var level_no = selectedVal.slice(6);
 
-                var question_txt = $("#question-text").val()
-                var option1 = $("#question-choice1").val()
-                var option2 = $("#question-choice2").val()
-                var option3 =  $("#question-choice3").val()
-                var option4 = $("#question-choice4").val()
-                var option_choice = $("#option-sele").val().slice(6)
-                var question_level = $("#outer").val()
-                var level_no = selectedVal.slice(6)
-
-                var clean = datacheck(question_txt, option1, option2, option3, option4, option_choice)
+                var clean = datacheck(question_type,question_txt, option1, option2, option3, option4, option_choice)
                 if (clean.length!=1){
 
                   $("#"+clean[1]).css("background-color", "yellow");
@@ -408,7 +553,7 @@ h4  {
                   $("#myModal").modal()
                 }
                 else{
-                    a = save_question(question_txt, option1, option2, option3, option4, option_choice, level_no);
+                    a = save_question(question_type,question_txt, option1, option2, option3, option4, option_choice, level_no);
                 }
 
                 //backendquery
@@ -432,12 +577,21 @@ h4  {
                     $(".ques-add").show();
 
                     all_level_vocab = level_vocab_detail[selectedVal];
-                    var select = document.getElementById("allow-vocab");
+                    all_level_vocab.reverse();
+                    // var select = document.getElementById("allow-vocab");
+                    // for(var i = 0; i < all_level_vocab.length; ++i) {
+                    //     var vocav_this_level = all_level_vocab[i]
+                    //     var option = document.createElement('option');
+                    //     option.text = option.value = vocav_this_level;
+                    //     select.add(option, 0);
+                    // }
+                    //
+                    $("#myInput").siblings().remove();
                     for(var i = 0; i < all_level_vocab.length; ++i) {
                         var vocav_this_level = all_level_vocab[i]
-                        var option = document.createElement('option');
-                        option.text = option.value = vocav_this_level;
-                        select.add(option, 0);
+                        var option = document.createElement('li');
+                        option.textContent = vocav_this_level;
+                        $("#myInput").after(option);
                     }
                     //
                     var inde = levels_keys.indexOf(selectedText)
@@ -446,12 +600,23 @@ h4  {
                       Cumulative_list = Cumulative_list.concat(level_vocab_detail[levels_keys[i]])
 
                     }
-                    var select = document.getElementById("Cumulative-allow-vocab");
+                     Cumulative_list.reverse();
+                    // $("#Cumulative-allow-vocab").empty();
+                    // var select = document.getElementById("Cumulative-allow-vocab");
+                    //
+                    // for(var i = 0; i < Cumulative_list.length; ++i) {
+                    //     var vocav_this_level = Cumulative_list[i]
+                    //     var option = document.createElement('option');
+                    //     option.text = option.value = vocav_this_level;
+                    //     select.add(option, 0);
+                    // }
+                    //
+                    $("#myInput2").siblings().remove();
                     for(var i = 0; i < Cumulative_list.length; ++i) {
                         var vocav_this_level = Cumulative_list[i]
-                        var option = document.createElement('option');
-                        option.text = option.value = vocav_this_level;
-                        select.add(option, 0);
+                        var option = document.createElement('li');
+                        option.textContent = vocav_this_level;
+                        $("#myInput2").after(option);
                     }
                     //
                     var all_level_ques_no = level_ques_detail[selectedVal];
@@ -482,8 +647,9 @@ h4  {
  </script>
 
 <script>
-    function save_question(question_txt, option1, option2, option3, option4, option_choice,level_no){
+    function save_question(question_type, question_txt, option1, option2, option3, option4, option_choice,level_no){
     		formdata=new FormData();
+        formdata.append("question_type",question_type);
     		formdata.append("question_txt",question_txt);
     		formdata.append("option1",option1);
         formdata.append("option2",option2);
@@ -540,9 +706,13 @@ h4  {
          }
 
 
-         function datacheck(question_txt, option1, option2, option3, option4, option_choice) {
+         function datacheck(question_type,question_txt, option1, option2, option3, option4, option_choice) {
            //question_txt = question_txt.trim()
-           if (question_txt==""){
+           match_option = check_same_value([option1, option2, option3, option4])
+           if (question_type=="select") {
+             return ["Select Question Type","question-type"]
+           }
+           else if (question_txt==""){
              return ["Add question","question-text"]
            }
            else if(option1=="") {
@@ -560,8 +730,30 @@ h4  {
            else if (option_choice ==="") {
                return ["Provide Correct Answer","option-sele"]
            }
+           else if (match_option[0]===0) {
+             var tag = "question-choice" + String(match_option[1] + 1)
+             return ["Options should be unique", tag]
+           }
+
 
              return "1"
+         }
+
+         function check_same_value(arry_choice) {
+
+           for (var i =0; i < arry_choice.length-1; i++) {
+
+             for (var j=i+1; j < arry_choice.length; j++ ) {
+
+              if (arry_choice[i]===arry_choice[j] ){
+                return [0,j]
+
+              }
+            }
+
+           }
+           return [1,3]
+
          }
 
 

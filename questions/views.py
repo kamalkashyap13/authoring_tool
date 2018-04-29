@@ -58,6 +58,7 @@ def sample(request):
 
 def question_add(request):
     if request.method == 'POST':
+        question_type = int(request.POST.get('question_type')[4])
         question_txt = request.POST.get('question_txt').strip()
         question_content = question_txt
         option1 = request.POST.get('option1')
@@ -99,7 +100,7 @@ def question_add(request):
             return JsonResponse({"main": "Question has not been added.",
                                  "body": "Readability score is less than permissible" },
                                 safe=False)
-        LevelQuestion.objects.create(level=level_detail,question_text=question_txt, choice1=option1,
+        LevelQuestion.objects.create(question_category=question_type, level=level_detail,question_text=question_txt, choice1=option1,
                                      choice2=option2, choice3=option3, choice4=option4,
                                      correct=option_choice, feedback="",date=today
                                      )
@@ -108,16 +109,22 @@ def question_add(request):
 
 
 
+#immediate -
+
+
+#last added questions
 
 
 
-
-
-
-#immediate -  http://textminingonline.com/dive-into-nltk-part-iv-stemming-and-lemmatization
-
-
+#requirements.txt
 # add data
+#add webserver - nginx, ?, mysql
+#move to spacy, move to new ec2 instance, 16.04
+# create data
+
+#https://courses.edx.org/courses/course-v1:Microsoft+DEV287x+1T2018a/course/ - coursera Ml
+#https
+
 
 
         #nlp = en_core_web_sm.load()
@@ -134,8 +141,10 @@ def question_add(request):
 # verify, show error  - dependency - django 2.4, pip install textstat, spacy
 # pip install -U spacy, python -m spacy download en
 
+#vocab - http://textminingonline.com/dive-into-nltk-part-iv-stemming-and-lemmatization
+# download wordnet
+#use both if lemma change then go with it or go with stemming
+#spacy
 
-#move to spacy, move to new ec2 instance, 16.04
-#requirements.txt
-#add webserver - nginx, ?, mysql
+
 #move to react
