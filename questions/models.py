@@ -13,6 +13,12 @@ class LevelWords(models.Model):
 
 
 class LevelQuestion(models.Model):
+    comprehension = 1
+    vocabulary = 2
+    grammar = 3
+    type_field = (('', '---------'), (comprehension, 'comprehension'), (vocabulary, 'vocabulary'),
+                   (grammar, 'grammar'))
+    question_category = models.IntegerField(choices=type_field)
     level = models.ForeignKey(Level, on_delete=models.CASCADE,)
     question_text = models.TextField(unique=True)  # only noun, verb, adjective, adverb
     choice1 = models.TextField()
