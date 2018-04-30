@@ -75,6 +75,7 @@ def sample(request):
 def question_add(request):
     if request.method == 'POST':
         question_type = int(request.POST.get('question_type')[4])
+        question_genre = int(request.POST.get('question_genre')[5])
         question_txt = request.POST.get('question_txt').strip()
         question_content = question_txt
         option1 = request.POST.get('option1')
@@ -116,7 +117,7 @@ def question_add(request):
             return JsonResponse({"main": "Question has not been added.",
                                  "body": "Readability score is less than permissible" },
                                 safe=False)
-        LevelQuestion.objects.create(question_category=question_type, level=level_detail,question_text=question_txt, choice1=option1,
+        LevelQuestion.objects.create(question_category=question_type, question_genre=question_genre, level=level_detail,question_text=question_txt, choice1=option1,
                                      choice2=option2, choice3=option3, choice4=option4,
                                      correct=option_choice, feedback="",date=today
                                      )

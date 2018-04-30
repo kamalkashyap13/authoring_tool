@@ -21,8 +21,25 @@ class LevelQuestion(models.Model):
     grammar = 3
     type_field = (('', '---------'), (comprehension, 'comprehension'), (vocabulary, 'vocabulary'),
                    (grammar, 'grammar'))
+    politics = 1
+    sports = 2
+    science = 3
+    entertainment = 4
+    world = 5
+    nation = 6
+    environment = 7
+    business_and_commerce = 8
+    tech = 9
+    lifestyle = 10
+    others = 11
+    genre_field = (('', '---------'), (politics, 'politics'), (tech, 'tech'),
+                   (lifestyle, 'lifestyle'),
+                   (sports, 'sports'),
+                   (science, 'science'), (entertainment, 'entertainment'), (world, 'world'), (nation, 'nation'),
+                   (environment, 'environment'), (business_and_commerce, 'business and commerce'), (others, 'others'))
     level = models.ForeignKey(Level, on_delete=models.CASCADE, )
     question_category = models.IntegerField(choices=type_field)
+    question_genre = models.IntegerField(choices=genre_field)
     question_text = models.TextField(unique=True)  # only noun, verb, adjective, adverb
     choice1 = models.TextField()
     choice2 = models.TextField()

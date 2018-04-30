@@ -32,15 +32,23 @@
   font-size: 21px;
 } */
 .ques-add{
-  background-color: gray;
+  background-color: #3F51B5;
+  /* gray; */
   padding: 20px 100px;
   margin-bottom: 100px;
   margin-top: 50px;
 
 }
+#sub-button{
+  background-color: #1A237E;
+}
 .label{
 
   margin-top: 10px;
+}
+select{
+  background-color: #a6a6a6;
+  color: white;
 }
 /* .form-control{
   background: black;
@@ -89,7 +97,8 @@ h4  {
 
 <style>
 .dropbtn, .dropbtn2 {
-    background-color: #4CAF50;
+    background-color: #7986CB;
+    /* #4CAF50; */
     color: white;
     padding: 16px;
     font-size: 16px;
@@ -98,7 +107,7 @@ h4  {
 }
 
 .dropbtn:hover, .dropbtn:focus, .dropbtn2:hover, .dropbtn2:focus {
-    background-color: #3e8e41;
+    background-color: #3F51B5;
 }
 
 #myInput2, #myInput {
@@ -256,6 +265,23 @@ tr:nth-child(even) {
                 <option value="type2">Vocabulary</option>
                 <option value="type3">Grammar</option>
               </select>
+              &emsp;
+              <select class="" id="question-genre">
+
+                <option value="choose">Question Genre</option>
+                <option value="genre1">Politics</option>
+                <option value="genre2">Sports</option>
+                <option value="genre3">Science</option>
+                <option value="genre4">Entertainment</option>
+                <option value="genre5">World</option>
+                <option value="genre6">Nation</option>
+                <option value="genre7">Politics</option>
+                <option value="genre8">Business and Commerce</option>
+                <option value="genre9">Tech</option>
+                <option value="genre10">Lifestyle</option>
+                <option value="genre11">Others</option>
+
+              </select>
               <br>
               <br>
               <!-- <label for="question-text">Question text:</label> -->
@@ -288,7 +314,7 @@ tr:nth-child(even) {
               </select>
             </div>
           </form>
-          <button type="submit" id="sub-button"  class="btn btn-primary">Submit</button>
+          <button type="submit" id="sub-button"  class="btn">Submit</button>
       </div>
 
 
@@ -378,6 +404,7 @@ tr:nth-child(even) {
     /* When the user clicks on the button,
     toggle between hiding and showing the dropdown content */
     function myFunction() {
+        //alert(111);
         document.getElementById("myDropdown").classList.toggle("show");
         $("#myDropdown2").attr("class","dropdown-content2");
     }
@@ -442,7 +469,7 @@ tr:nth-child(even) {
     levels_keys = Object.keys(level_range_detail).sort(sortAlphaNum);
 
     window.onload = function () {
-        myFunction()
+        fillltable();
         var select = document.getElementById("outer");
         for(var i = 0; i < levels_keys.length; ++i) {
           levels_keys_name = levels_keys[i]
@@ -504,7 +531,8 @@ tr:nth-child(even) {
       })
 
            $("#sub-button").on("click", function(){
-                var question_type = $("#question-type").val()
+                var question_type = $("#question-type").val();
+                var question_genre = $("#question-genre").val();
                 var question_txt = $("#question-text").val();
                 var option1 = $("#question-choice1").val();
                 var option2 = $("#question-choice2").val();
@@ -514,15 +542,15 @@ tr:nth-child(even) {
                 var question_level = $("#outer").val();
                 var level_no = selectedVal.slice(6);
 
-                var clean = datacheck(question_type,question_txt, option1, option2, option3, option4, option_choice)
+                var clean = datacheck(question_type, question_genre, question_txt, option1, option2, option3, option4, option_choice)
                 if (clean.length!=1){
 
-                  $("#"+clean[1]).css("background-color", "yellow");
+                  $("#"+clean[1]).css("background-color", "#f6544c");
                   fill_modal_data("Add the mentioned data",clean[0])
                   $("#myModal").modal()
                 }
                 else{
-                    a = save_question(question_type,question_txt, option1, option2, option3, option4, option_choice, level_no);
+                    a = save_question(question_type, question_genre, question_txt, option1, option2, option3, option4, option_choice, level_no);
                 }
 
                 //backendquery
@@ -618,9 +646,10 @@ tr:nth-child(even) {
  </script>
 
 <script>
-    function save_question(question_type, question_txt, option1, option2, option3, option4, option_choice,level_no){
+    function save_question(question_type, question_genre, question_txt, option1, option2, option3, option4, option_choice,level_no){
     		formdata=new FormData();
         formdata.append("question_type",question_type);
+        formdata.append("question_genre",question_genre);
     		formdata.append("question_txt",question_txt);
     		formdata.append("option1",option1);
         formdata.append("option2",option2);
@@ -677,11 +706,14 @@ tr:nth-child(even) {
          }
 
 
-         function datacheck(question_type,question_txt, option1, option2, option3, option4, option_choice) {
+         function datacheck(question_type, question_genre, question_txt, option1, option2, option3, option4, option_choice) {
            //question_txt = question_txt.trim()
            match_option = check_same_value([option1, option2, option3, option4])
            if (question_type=="select") {
              return ["Select Question Type","question-type"]
+           }
+           else if (question_genre=="choose"){
+             return ["Select Question Genre","question-genre"]
            }
            else if (question_txt==""){
              return ["Add question","question-text"]
@@ -727,7 +759,7 @@ tr:nth-child(even) {
 
          }
 
-         function myFunction() {
+         function fillltable() {
              var table = document.getElementById("myTable");
              //
              //
