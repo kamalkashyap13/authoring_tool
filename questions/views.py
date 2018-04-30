@@ -110,14 +110,12 @@ def question_add(request):
 
 
 #immediate -
-
-
-#last added questions
+#last added questions - #stats total question level wise
+#data
 
 
 
 #requirements.txt
-# add data
 #add webserver - nginx, ?, mysql
 #move to spacy, move to new ec2 instance, 16.04
 # create data
