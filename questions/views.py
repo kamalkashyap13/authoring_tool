@@ -19,6 +19,7 @@ def index(request):
     level_dict = {}
     vocab_dict = {}
     ques_dict = {}
+    ques_all_dict = {}
     for i in range(len(level_detail)):
         level_no = level_detail[i].levels
         level_low = level_detail[i].reading_range_low
@@ -28,6 +29,8 @@ def index(request):
         level_dict[level_name] = {"range": level_range}
         vocab_dict[level_name] = []
         ques_dict[level_name] = 0
+        ques_all_dict[level_name] = [0,0,0,0]
+    ques_all_dict["Total"] = [0,0,0,0]
 
     for i in range(len(vocab_detail)):
         level_no = vocab_detail[i].level.levels
@@ -37,13 +40,26 @@ def index(request):
 
     for i in range(len(ques_detail)):
         level_no = ques_detail[i].level.levels
+        question_type = ques_detail[i].question_category
         level_name = "Level " + str(level_no)
-        ques_dict[level_name]+=1
+        ques_dict[level_name] += 1
+        ques_all_dict[level_name][3] += 1
+        ques_all_dict["Total"][3] += 1
+        if question_type == 1:
+            ques_all_dict[level_name][0] += 1
+            ques_all_dict["Total"][0] += 1
+        elif question_type == 2:
+            ques_all_dict[level_name][1] += 1
+            ques_all_dict["Total"][1] += 1
+        else:
+            ques_all_dict[level_name][2] += 1
+            ques_all_dict["Total"][2] += 1
 
     context = {
         'level_range_detail': level_dict,
         'level_vocab_detail': vocab_dict,
-        'level_ques_detail': ques_dict
+        'level_ques_detail': ques_dict,
+        'level_ques_all_detail':ques_all_dict
     }
     return HttpResponse(template.render(context, request))
 

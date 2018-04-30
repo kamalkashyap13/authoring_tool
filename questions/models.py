@@ -6,8 +6,8 @@ class Level(models.Model):
     reading_range_high = models.IntegerField(unique=True)
     reading_range_low = models.IntegerField(unique=True)
 
-    def __unicode__(self):
-        return "Level" +  str(self.levels)
+    def __str__(self):
+        return "Level " +  str(self.levels)
 
 
 class LevelWords(models.Model):

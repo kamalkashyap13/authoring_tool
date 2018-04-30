@@ -11,6 +11,7 @@
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
 <style>
 .body-class{
   margin-top: 80px;
@@ -51,6 +52,9 @@
 <style>
 .ques-edit{
   padding: 10px 20px;
+}
+.ques_analytics{
+  padding: 30px 40px;
 }
 .question_view{
   margin-top: 40px;
@@ -135,6 +139,23 @@ h4  {
 .dropdown li:hover, .dropdown2 li:hover  {background-color: #ddd}
 
 .show, .show2 {display:block;}
+</style>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 2px 6px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
 </style>
 </head>
 
@@ -312,88 +333,17 @@ h4  {
           </form>
 
         </div>
-
-
-        <div class='question_view'>
-          <h4 id="level_ques_edit">Question 2 From Level 1 </h4>
-          <form class="form-align-left">
-            <div class="form-group">
-              <label for="question-text">Question text:</label>
-              <p class='question-edit-text' contenteditable="true">
-                The race for Fortis Healthcare Limited has intensified with the company receiving an unsolicited non-binding expression of interest from Fosun Health Holdings Limited, a wholly-owned subsidiary of Fosun International Limited.
-              </p>
-              <label for="question-text">Choice 1:</label>
-              <p class='question-edit-text' contenteditable="true">
-                Limited
-              </p>
-              <label for="question-text">Choice 2:</label>
-              <p class='question-edit-text' contenteditable="true">
-                Healthcare
-              </p>
-              <label for="question-text">Choice 3:</label>
-              <p class='question-edit-text' contenteditable="true">
-                receiving
-              </p>
-              <label for="question-text">Choice 4:</label>
-              <p class='question-edit-text' contenteditable="true">
-                expression
-              </p>
-              <label for="question-text">Correct Answer:</label>
-              <p>
-              <select id="vocab-sele">
-                <option value="choice1">Choice 1</option>
-                <option value="choice2">Choice 2</option>
-                <option value="choice3">Choice 3</option>
-                <option value="choice4">Choice 4</option>
-              </select>
-            </p>
-
-
-            </div>
-          </form>
-
-        </div>
-        <div class='question_view'>
-          <h4 id="level_ques_edit">Question 1 From Level 2 </h4>
-          <form class="form-align-left">
-            <div class="form-group">
-              <label for="question-text">Question text:</label>
-              <p class='question-edit-text' contenteditable="true">
-                The race for Fortis Healthcare Limited has intensified with the company receiving an unsolicited non-binding expression of interest from Fosun Health Holdings Limited, a wholly-owned subsidiary of Fosun International Limited.
-              </p>
-              <label for="question-text">Choice 1:</label>
-              <p class='question-edit-text' contenteditable="true">
-                Limited
-              </p>
-              <label for="question-text">Choice 2:</label>
-              <p class='question-edit-text' contenteditable="true">
-                Healthcare
-              </p>
-              <label for="question-text">Choice 3:</label>
-              <p class='question-edit-text' contenteditable="true">
-                receiving
-              </p>
-              <label for="question-text">Choice 4:</label>
-              <p class='question-edit-text' contenteditable="true">
-                expression
-              </p>
-              <label for="question-text">Correct Answer:</label>
-              <p>
-              <select id="vocab-sele">
-
-                <option value="choice1">Choice 1</option>
-                <option value="choice2">Choice 2</option>
-                <option value="choice3">Choice 3</option>
-                <option value="choice4">Choice 4</option>
-              </select>
-            </p>
-
-
-            </div>
-          </form>
-
-        </div>
-
+      </div>
+      <div class="ques_analytics">
+        <table id="myTable">
+          <tr id="header_row">
+            <th>Level</th>
+            <th>Comprehension</th>
+            <th>Vocabulary</th>
+            <th>Grammar</th>
+            <th>Total</th>
+          </tr>
+        </table>
 
       </div>
 
@@ -468,6 +418,19 @@ h4  {
             }
         }
     }
+    var reA = /[^a-zA-Z]/g;
+    var reN = /[^0-9]/g;
+    function sortAlphaNum(a,b) {
+        var aA = a.replace(reA, "");
+        var bA = b.replace(reA, "");
+        if(aA === bA) {
+            var aN = parseInt(a.replace(reN, ""), 10);
+            var bN = parseInt(b.replace(reN, ""), 10);
+            return aN === bN ? 0 : aN > bN ? 1 : -1;
+        } else {
+            return aA > bA ? 1 : -1;
+        }
+    }
     </script>
     <script>
     selectedVal = "option1";
@@ -475,10 +438,11 @@ h4  {
     level_range_detail = {{ level_range_detail | safe }};
     level_vocab_detail = {{ level_vocab_detail | safe }};
     level_ques_detail = {{ level_ques_detail | safe }};
-    levels_keys = Object.keys(level_range_detail).sort();
+    level_ques_all_detail = {{level_ques_all_detail | safe}};
+    levels_keys = Object.keys(level_range_detail).sort(sortAlphaNum);
 
     window.onload = function () {
-
+        myFunction()
         var select = document.getElementById("outer");
         for(var i = 0; i < levels_keys.length; ++i) {
           levels_keys_name = levels_keys[i]
@@ -486,6 +450,9 @@ h4  {
           option.text = option.value = levels_keys_name;
           select.add(option);
         }
+        var option = document.createElement('option');
+        option.text = option.value = "All Questions";
+        select.add(option);
 
         // var option = document.createElement('option');
         // option.text = "All Questions";
@@ -529,6 +496,7 @@ h4  {
 
      // $(".ques-edit").hide() level_div
       $(".ques-edit").hide();
+      $(".ques_analytics").hide();
       //$(".ques-add").hide();
         $('#outer').change(function () {
         v = $(this).val().slice(6)
@@ -566,9 +534,10 @@ h4  {
                 selectedText = this.options[this.selectedIndex].text;
                 $("#allow-vocab").empty();
 
-                if (selectedVal=="option14"){
+                if (selectedVal=="All Questions"){
                     $(".level_div").hide()
-                    $(".ques-edit").show();
+                    $(".ques-edit").hide();
+                    $(".ques_analytics").show();
                     $(".ques-add").hide();
                 }
                 else
@@ -576,6 +545,7 @@ h4  {
                     $(".level_div").show()
                     $(".ques-edit").hide();
                     $(".ques-add").show();
+                    $(".ques_analytics").hide();
 
                     all_level_vocab = level_vocab_detail[selectedVal];
                     all_level_vocab.reverse();
@@ -757,8 +727,45 @@ h4  {
 
          }
 
+         function myFunction() {
+             var table = document.getElementById("myTable");
+             //
+             //
+             // var cell2 = row.insertCell(1);
+             // cell1.innerHTML = "NEW CELL1";
+             // cell2.innerHTML = "NEW CELL2";
 
+             for (var i=0; i<levels_keys.length; i++){
+               var row = table.insertRow(-1);
+               var level_n = levels_keys[i];
+               var cell0 = row.insertCell(0);
+               cell0.innerHTML = level_n;
+               var row_detail = level_ques_all_detail[level_n];
+               var cell1 = row.insertCell(1);
+               cell1.innerHTML = row_detail[0];
+               var cell2 = row.insertCell(2);
+               cell2.innerHTML = row_detail[1];
+               var cell3 = row.insertCell(3);
+               cell3.innerHTML = row_detail[2];
+               var cell4 = row.insertCell(4);
+               cell4.innerHTML = row_detail[3];
+             }
+             var row = table.insertRow(-1);
+             var level_n = "Total";
+             var cell0 = row.insertCell(0);
+             cell0.innerHTML = level_n;
+             var row_detail = level_ques_all_detail[level_n];
+             var cell1 = row.insertCell(1);
+             cell1.innerHTML = row_detail[0];
+             var cell2 = row.insertCell(2);
+             cell2.innerHTML = row_detail[1];
+             var cell3 = row.insertCell(3);
+             cell3.innerHTML = row_detail[2];
+             var cell4 = row.insertCell(4);
+             cell4.innerHTML = row_detail[3];
+         }
 </script>
+
 
 </body>
 </html>
