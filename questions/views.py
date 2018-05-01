@@ -4,6 +4,7 @@ from django.http import HttpResponse, JsonResponse
 from .models import Level, LevelWords, LevelQuestion
 from django.db.models import Q
 import nltk
+from django.db import IntegrityError
 #import en_core_web_sm
 from textstat.textstat import textstat
 import datetime
@@ -98,13 +99,13 @@ def question_add(request):
         for i in range(len(all_vocab_detail)):
             cumulative_vocab.append(all_vocab_detail[i].word)
         score = textstat.flesch_reading_ease(question_txt)
-        print (question_txt)
-        print (score)
+        # print (question_txt)
+        # print (score)
         text_with_pos_tag = nltk.word_tokenize(question_txt)
         question_all_vocab = nltk.pos_tag(text_with_pos_tag)
         question_vocab = []
         for i in range(len(question_all_vocab)):
-            print (question_all_vocab)
+            # print (question_all_vocab)
             word = question_all_vocab[i][0]
             pos_tag = question_all_vocab[i][1]
             if pos_tag in ["JJ","JJR","JJS","NN","NNS","RB","RBR","VB","VBD","VBG","VBZ"]:
@@ -113,21 +114,30 @@ def question_add(request):
         for wor in question_vocab:
             if wor not in all_vocab:
                 return JsonResponse({"main": "Question has not been added.", "body": "Please change this word " + wor}, safe=False)
-        if score<level_low:
+        if score < level_low:
             return JsonResponse({"main": "Question has not been added.",
                                  "body": "Readability score is less than permissible" },
                                 safe=False)
-        LevelQuestion.objects.create(question_category=question_type, question_genre=question_genre, level=level_detail,question_text=question_txt, choice1=option1,
-                                     choice2=option2, choice3=option3, choice4=option4,
-                                     correct=option_choice, feedback="",date=today
-                                     )
-        return JsonResponse({"main": "Question has been added.", "body": question_content}, safe=False)
+        try:
+            LevelQuestion.objects.create(question_category=question_type, question_genre=question_genre, level=level_detail,question_text=question_txt, choice1=option1,
+                                         choice2=option2, choice3=option3, choice4=option4,
+                                         correct=option_choice, feedback="",date=today
+                                         )
 
-
-
+            return JsonResponse({"main": "Question has been added.", "body": question_content}, safe=False)
+        except IntegrityError as e:
+            print(e.args[0])
+            print(828282)
+            if 'UNIQUE constraint' in e.args[0]:
+                print(9191191)
+                return JsonResponse({"main": "Question has not been added.", "body": "Question text already exists."}, safe=False)
+            else:
+                return JsonResponse({"main": "Question has not been added.",
+                                     "body":"Please check the question content again."},
+                                    safe=False)
 
 #immediate -
-#last added questions - #stats total question level wise
+# unique error, forbidden
 #data
 
 

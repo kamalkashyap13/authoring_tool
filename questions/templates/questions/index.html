@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 {% load static %}
-<html>
+<html lang="en">
 <head>
-  <title>Augli -  Assessment</title>
+  <title>Augli -  Authoring tool</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="{% static 'questions/images/col_lo.png' %}" type="image/png" >
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -41,14 +42,20 @@
 }
 #sub-button{
   background-color: #1A237E;
+  padding: 4px 4px;
 }
 .label{
 
   margin-top: 10px;
 }
 select{
-  background-color: #a6a6a6;
+  background-color:#535353;
+  padding: 4px 4px;
   color: white;
+  color: #e5e5e5;
+}
+option{
+  background-color:#a9a9a9;
 }
 /* .form-control{
   background: black;
@@ -100,8 +107,8 @@ h4  {
     background-color: #7986CB;
     /* #4CAF50; */
     color: white;
-    padding: 16px;
-    font-size: 16px;
+    padding: 8px 12px;
+
     border: none;
     cursor: pointer;
 }
