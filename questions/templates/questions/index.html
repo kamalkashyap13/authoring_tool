@@ -5,7 +5,344 @@
   <title>Augli -  Authoring tool</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="{% static 'questions/images/col_lo.png' %}" type="image/png" >
+  <!-- <link rel="icon" href="{% static 'questions/images/col_lo.png' %}" type="image/png" > -->
+  <link href="data:image/x-icon;base64, iVBORw0KGgoAAAANSUhEUgAAA58AAASpCAYAAABYla1CAAAACXBIWXMAAC4jAAAuIwF4pT92AAAA
+GXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAASnBJREFUeNrs3e1121a6NmBk1vyn
+UkEYNRClgtAV2KmAdAW2K4hdQawKQlRguoLAFURugMFUcKgK3hfb2rIpWRLBTYDEx3WtpcOcmSAj
+PyHBfWN/PP/NABil6/n5RfVyVv3cvv5U/Uzjfz3d+usUxdZff4qv5e3PJF+X/g0AwLj8oAQAgw+Z
+sxgwf4qvhwbLplzFMPo5/vWVUAoAwicA/QiaFzFg/hZfL3r2R9jEIPopvhZVIN34NwsAwicApw+b
+sxg2w+vZAP+YX0JoDKTCKAAInwAcKXC+qF6ex7A5HWEJQhD9WP2sLNMFAOETgObCZpjNvA2cL1Tk
+jhA+V9VPXgXRK+UAAOETgP1D523gXKhG7SCaVz9LM6IAIHwC8HTgDHs45zFwnqlIsjALepndLM21
+RxQAhE8AYugMYfNV1r/TabsuBM+wLPfSslwAED4Bxho4p9nNDGcInWY521dkN3tDl0oBAMInwFhC
+5x+ZvZynUlY/7zJLcgFA+AQYaOicZTeznE6s7YYQPMO+0PdCKAAInwBDCZ1hpnOmGkIoAAifADQd
+OqfVy5+Zmc4+hdB3VQB9rxQAIHwC9CF0nsXQuVCNXipjCF0qBQAInwBdDZ5vM6fXDkURQ2ihFAAg
+fAJ0JXSGpbVhtnOqGoOzrH7e2A8KAMInwClDZwibf2UOExo6+0EBQPgEOFnwfJtZYjs2V9XPyyqE
+XikFAAifAG2HzovsZrbzQjVGK8yCvlUGABA+AdoKniFw/KESZGZBAUD4BGghdJrt5DFmQQFA+ARo
+JHi+zm5mO+3t5DFh9vP3KoSWSgEAwifAvqEzhM0w2/lCNaghnIgbluGulAIAhE+AusEzLK/9kOnb
+yf6Wmb6gAPCd/ygBwHfBMyyz/UfwJNGi+vk79oAFACIznwDfQmdYZvtnDA9wKMtwAWCLmU+Am+A5
+rV7+FjxpUHiY8SG25wGA0TPzCQieN/s7/86cZkt7lpl9oACMnJlPYOzBc5Hd7O8UPGlTeJ/9HZd2
+A4DwCTCy4Pk2u2mlAscQZtj/iTPtADA6lt0CYw2eIXQuVIITCEtvn03y9ZVSACB8Agw3dIZljyF4
+vlANTiychLtUBgCET4BhBs9wsJBljwigAHBk9nwCgieczl/x0CsAED4BBE9oPYD+qQwACJ8A/Q6e
+F4InPfA6HoIFAINlzycwhuCptyJ9sZzk65fKAIDwCdCf4BkC57+CJwIoAHSDZbfAUIOnGU/6amEP
+KADCJ0B/gqc9nvTZa6fgAiB8AgiecAzasAAgfAJ0lOCJAAoAwidAe2KbCsGToQZQ720AhE+AjgTP
+hUowYH8LoAAInwCnDZ4LwZMRCPuZP8R9zQAgfAIcOXi+qF7+UglGYprdzIAKoAAInwBHDJ4Xgicj
+FN73eoACIHwCHCl4flmCmN0sRYSxWVSfgbfKAIDwCdC+0FJlqgyM2B9x2TkACJ8AbagG3GHJoVM/
+QQsWAIRPgNaC56J6ea0S8MVZDKCWnwMgfAI0GDwdtALfc/AWAKccn02FT2BoN7azOMA2wwPfe1F9
+RqwIAOAU/qm+g0IbsJnwCQyFfZ6w4zNi/ycAxxQPvgsTAyF4hgD6166ZUOET6PqNbVG9LFQCdvpg
+/ycARzS/9/+H8VqYCX372PeR8Al0OXhOM/s8oS6fFwCONUYL4fKhll/hP/+j+vk3TiAIn0BvfMjs
+84R9LPT/BOAIdn3X3J7I/u/2ftAf1A3oorBkI7t5cgbsZ1P9/DrJ16VSANDSOO2fbL/zOIrq543w
+CXTxhhZuZv+oBCQrqvD5TBkAaGGcNq1e/k251rJboGs3tLBM44NKwEFm2q8A0JJXidddCZ9A14Sl
+tlNlgMM/S/s2/waAGlLPFsiFT6Az4oZ0szXQjC+HPSgDAA2O1ULwnCZevhQ+gS7RJgKaZfktAE16
+nnjdapKvN8In0AnxdNsLlYDG/fFYs28A2GOsFr5LFomX5+H/CJ9AF25m00xbFWiL5bcANCF1r+dm
+kq9XwifQFQbG0PKAYbvJNwAkSD3ldnX7F8IncFLVgHhRvRgUQ/v+svwWgMTx2jRL3x51KXwCXbiR
+hYGwQ4bgOMLAweFDAKRYJF5XTvL1lfAJdEHY52kmBo7nld6fACSYJ153uf3/CJ/AScQBsFkYOC6r
+DQDYd8w2y9J7e66ET6ALHDIEp+HwIQD2kTrrGXp7lsIncFJx4GvwC6dj9hOAOmO2sGImtcXKx/v/
+gfAJGPjC+FzEk6YB4CkheKaczxF6ey6FT+Ck4oD3QiXg5P5QAgB2SF5y+9B/KHwCBrwwTtPr+flb
+ZQDgIfFwyFni5bnwCZz6JhYGulOVgM54FffzAMB9qXs9Q2/PQvgEThk8wwD3lUpAp4TPpZZHADwk
+ddyWP/ZfCJ/AsbzO0jasAy0PLsx+ArCt+l4I53NMEy9fCp/AKW9gZj2hu8x+AnBf6rituN/bU/gE
+js2sJ3R8kGH2E4Atqfs986f+S+ETaJVZT+gFs58A3I7dFllib8/skRYrwidwLGY9oR/MfgIQPE+8
+bjXJ1xvhEziluRJAL5j9BBi52Nszdcntx11/g/AJtHkDW2T6ekKfWCIPMG6H9PZcCZ/AKf2hBNAr
+Z/GhEQDjlLpibVXnbxI+gVZUA9jw5GyqEtA7HhoBjHPsFnp7XiRefil8Aqdk+R700zQ+PAJgXFJn
+Pa+e6u0pfAKtik/OZioBveXhEcD4LBKvu6z7NwqfgIErcN8snngIwAjEFS+p7bZWdf9G4RNo+uYV
+blwLlYDes/cTYDxSl9wud/X2FD6BNgmeMAwv4sMkAAYs3utb6+0pfAJtsuQWhuGQwQgA/bFIvK5W
+b0/hE2iF9iowOB4mAQxfq709hU+gazcvoJsu4unVAAzQgb09c+ETONXNyxI9GCaznwDDdUhvzyvh
+EziVhRLAIDl4CGDA9/jE6/KUi4RPoCmW3MIwWdUAMEAHntWxFD6BU928DtkvAHSfh0sAw/M88brV
+Pr09hU/AwBTYx+x6fj5VBoBhiNspFomX56n/u8In0ARL8sDnHIDh39M3+/b2FD6BxujtCaNhhQPA
+cKSeZL485H9U+AQO9VwJYBQuLL0F6L94Lz9ab0/hE2iSpXjg8w5Af6TOepYpvT2FT6ARccmt/n8w
+HpbeAvRf6oPEy0P/h4VP4BCW3MK4WHoL0GPVPXyWpZ/VsTr0f1/4BA5hCR743APQH6krWEJvz1L4
+BE4iPjmz5BYMXADox9gtjNtSHyB+bOJ3ED6BVJbcwjhZegvQT6lndYTenkvhEzj1DQwYp5kSAPRO
+8pLbpn4B4RPYW5z1mKoEjJaVDwD9G7vNEi+/bOr3ED6BFGY9YdxmSgDQK4vE6w7u7Sl8Aof6TQlg
+1M7ioWMA9EPqktu8yV9C+ARSmPkELL0F6IHr+flFlr5dail8Aqe8gQmeQDBTAoBeeJV4XdFEb0/h
+EziEJbdAcBF7xgHQbakTB3nTv4jwCexrpgTAgQMaAI7gen6+yBJ7e2YNtlgRPoGUG1i4eV2oBBBZ
+CQHQban781eTfL0RPoFTmikB4J4A0H2xt2dnltwKn8C+zHIA26b2fQJ0VmrwDL09C+ETOLWZEgDu
+CwC9kHrKbd7WLyR8Avuw3xO4z4oIgI7pUm9P4RNIuYnNVAF4gHsDQPekznpeNd3bU/gEDDCBplgR
+AdA9qfs9L9v8pYRPoK5flAB4iJURAJ26J4fgmXoY3KrN3034BOoyuwG4PwB03zzxumUbvT2FT2Av
+sU/UVCWAR1gZAdCNMVuY8Uxdcvux7d9P+ATqMKsBuEcAdN8i8brQ23PV9i8nfAIGloB7BMAwpC65
+XR3jlxM+gTosqQOe5NAhgJPfh8ODwNSHgZfH+B2FT6AOsxqA+wRAt6XOerba21P4BPY1VQJgh5+U
+AOCkFonX5cf6BYVP4EmW0gE1mfkEON147ZDenkvhE+iKqRIAwidApz1PvG7Vdm9P4RMQPoGmncX+
+cgAcUbz3LhIvz4/5uwqfwC6/KQFQk9lPgON7kXjd5hi9PYVPYB9TJQCET4DOepV43fLYv6jwCQif
+QFMsuwU4ouv5eRinpT74y4/9+wqfwFM3NLMYwD4s0wc4rtRZz9Db80r4BLrELAbgngHQXan7PfNT
+/LLCJ/CUmRIAe7BaAuBIYm/PaeLlq1P8zsInANDkYMjsJ8BxHNLbsxQ+ga6xfwvYl9lPgJbFB32p
+S24/nur3Fj4BgCaZ+QRo34vE+23o7bkUPoEuMoMBuG8AdM888brVKX9p4RN4ihkMAIAOib09Z4mX
+XwqfQFdvbAD7+kUJAFq1SLyuPEVvT+ETqEP4BFJYMQHQrtQlt5en/sWFTwBA+ATogev5+SzrWW9P
+4ROow6EhgHsHQLckHzR0qt6ewidQh9kLAICO6GtvT+ETAGh7gARAs5J7e2YdWHIrfAJP+UkJgESW
+3gI073nidWHJ7Ub4BLpsqgQAAKcXW+ClLrnNu/LnED4BAAC6LTV4ht6ehfAJAAyVPZ8AzXqVeF3e
+pT+E8AkYPAJNs+cToCHX8/NwT50mXr4UPgGDRwAA6kid9Sy60NtT+AQAAOiH3h80JHwCAAB02PX8
+fJGlb4Vade3PI3wCAAB0U2pvz2VXensKnwAAAB12PT8PM56pS24/dvHPJHwCAE37SQkADrZIvC70
+9lx18Q8kfAIATZsqAcDB5onXrbr6BxI+AQAAOiT29kxte3cpfAJ9u+EBAHAaqbOeV13r7Sl8Aruc
+KQEAwMksEq+77PIfSvgEAADoiOv5eTjhdjC9PYVPAACAbko+aKiLvT2FT+BJ1Y2rUAUAgOM6sLdn
+3vU/n/AJAADQDanBc9PV3p7CJwAAQPe8Srxu2Yc/nPAJADTtkxIA7Od6fj7N0nt75n34MwqfAAAA
+p5c66xl6e14JnwAAANQx2IOGhE8AAIAOiL09p4mXL4VPAAAA6nieeF3ne3sKn0AdGyUAAGhX7O25
+SLw879OfVfgEHnOlBECiUgkAaht0b0/hEwAQPgG6IfWU21Xf/qDCJwAAwAkc2NvzUvgEhsKeTwCA
+di0Sryv70ttT+ATq+KwEQOqgSAkAapknXnfZxz+s8AkANGqSr4VPgB2u5+ezLL2356qPf2bhEwAA
+4PhSZz1XfX3IJ3wCjymUAEhQKgHA02Jvz9QWKx/7+ucWPgEA4RPguELwPEu4LvT2XAqfwNA47RYA
+oB3JS277/IcWPoEH9fH4bqATPikBwONib89Z4uW58AkAAEAdqXs9Q2/PQvgEhqpQAmDfwZESADzp
+VeJ1ed//4MInACB8AhzB9fz8Ikvv7bkUPoEhs+8TED4BmpM661n0tben8AnUda0EwD6GMDgCaFHq
+fs98CH944RN4iplPYB+CJ8Ajrufniyyxt2fW8xYrwidQ92YHIHwCHO554nWrSb4exJhM+AQe1ffj
+vIGjs1oC4AGxt2fqktuPQ6mD8AnsYvYTqD2+UgKABx3S23M1lCIIn8AuZjKAugolAHhQ6im3qyEV
+QfgEhE+gKaUSANx1YG/PS+ETGJP/KQFQhzYrAA+aJ153NbT7qvAJ7LzxKQFQQ6EEAA9aJF53ObRC
+CJ+A8Ak0oVQCgLuu5+fhoKGzxMtXQ6uH8Ak8KfaVcuItsIsl+gDfS11yuxxKb0/hE9iX2U9gl0IJ
+AL65np+HGc/R9/YUPoF9fVICYAcPqQDuWiReN6jensInsPdNUAmAHQMly/MB7kpdcrsaakGET6AO
+MxqAewRATbG350Xi5bnwCYzWJF+HgaVZDeAxn5UA4I5DensO9oGe8AnUvhkqAfCIQgkA7kg9aCgf
+clGET6Auhw4Bj/FwCiCKvT2niZcvhU8Ag0vgkXuDw4YA7nieeN1q6PdT4ROoq1AC4KHwqQQAN2Jv
+z0Xi5fnQ6yN8ArXEJ3EGmcB9luQDfJO613Mz1N6ewieQSvgE7iuUAOCrV4nXLcdQHOET2IcZDmBb
+eFJfKgPAlyW300xvT+ETaEyhBIB7AsCDUmc9yyH39hQ+gSRxhqNUCSD6qAQAX6Xu97wcS4GET2Bf
+hRIA7gcA31zPz2dZem/P1VjqJHwC+zLTAQSl/Z4AX81Tg+eY7qXCJ7CvQgkA9wKAG7G3Z+qS21E9
+1Bc+gb3o9wmMccAE8IQQPM8Srgsnhi+FTwCDTuBphRIAfJG85HZshRI+ATdLYO/gGVdBAIxa7O05
+S7z8cmz1Ej6BvcVeVAaeMF5WPwDcWCReN5rensIn0ASznzBehRIAfJG65DYfY7GETyCVmQ8Yp1E+
+rQe478DenkvhE6CmavBp5hPGyWcf4EbqrGcx1j7JwidgEArsI1cCgC9Se3uO9j4qfAKHsPQWxsWS
+W4Dsy5LbRZbY2zMb8cN74RM4hJlP8JkHGKPnqffRMbeqEj6BZPHmaTAK42HJLTB6sbenJbfCJ3AC
+lt7COFhyC3AjNXiG+2ghfAKkCzOfG2WAUXzWAciyV4nXjX71iPAJHMTSWxgNS26B0buen19kensK
+n8BJWXoLw3ZlyS3AF6mznldj7e0pfAKNqm6mYeazVAkYLLOeADdS93teKp3wCTTH0lvw+QYYrOv5
+eQieZ4mXu48Kn0CDPNGDgQZPS8UAvpgnXrccc29P4RNoXBycFioBg2PJLTB61/PzMOOZuuTW2RjC
+J2CQCuxQxj3dAGO3cB8VPoFu0fMThsUDJYAbqUtuBU/hE2hD3M+wVAkYDJ9nYPRib8+LxMudiSF8
+Ai1yk4VhcNAQwI3UWU+9PYVPoE0OHoLB8CAJ4MYi8TpbF4RPwKAV2CEckFEoAzB2B/b2XKqg8Am0
+LJ7qVqoE9NY7JQD44nnidSu9PYVPwOAVeFoYLDmdERi92NtzkXi5JbfCJ3BE2q5AP116Wg/wxYvE
+6zZ6ewqfwBHFwau9n9A/75UA4ItXidctlU74BE4ziDWDAv2xNOsJ8GXJ7TRL7+1pya3wCRxbHMRa
+dgL9Ya82wI3UWc/Q2/NK+YRPwGAWeNxSM3SAr1L3e5r1FD6BU4mD2aVKQOd5UASQfe3tOU283Iov
+4RMwqAWeYNYT4JtDenu6lwqfwCmZ/YTO84AIIDu4t+dHFRQ+AYNb4HFmPQG+OaS351L5hE+gA+Lg
+Vv9A6B4PhgC+mSdeZ6+n8Al0cJCrhyB0h1lPgCj29pwlXn6pgsIn0CGx76ebM3RD+Dy+UQaArxaJ
+15V6ewqfQDe9z8x+QhdcxgdCANxIXXLrwbrwCXRRHOyabYHTCp9De7ABouv5+SzT21P4BAYZQJfV
+S6kScDJvzHoC3JF80JC988In0H0vlQBO4ko7AIBvYm/P1BYrensKn0DXVYPfIrNMBU7BsneAu0Lw
+PEu4bmMsI3wCBsHAw5bxwQ8A3zxPvG5lC4PwCfRE3COhwT0ch8O+AO6JvT1Tl9zmKih8Av0STtws
+lQFa984TeoDvpAbP0koS4RPomTgYdvgQtCscMqS1CsD3XiVeZ9ZT+AR6GkCLzIZ9aJMHPAD3XM/P
+L7L03p5LFRQ+gX4Pji0JhOa9n+TrK2UA+E7qrGeht6fwCfSY5bfQijA4cqgXwMMcNCR8AiMOoGHp
+baES0JiXDhkC+N71/HyRpfX2DGwVEj6BoQyWM8tvoQnvncQI8KjU3p5LD/WET2Ag4h4Ky2/hMOFz
+ZLktwAOu5+dhxjN1ye1HFRQ+gWEF0LCcxZIWSGe5LcDjFonXlXGMgvAJDG3wnFl+CyneWW4L8KR5
+4nWCp/AJDFGctfldJWAvV9Vn560yADws9va8SLz8UgWFT2C4AbSoXt6rBNTigQ3Abqmznld6ewqf
+wPAD6Jtww1cJ2OmNgRHATovE68x6Cp/ASITZHPs/4XHh6P+lMgA87np+Hk641dtT+AR4nPYr8KSw
+MuCNMgDslLrkVm9P4RMYWQANTxzt/4S7vuzzNCgCeJrensInwL4BNMzuFCoBX720zxOglkXidRu9
+PYVPYLzC/k+Dbbjp52lABFBP8pJbpRM+gZHa6v9pmSFjttLPE6Ce6/n5NEvv7ZmroPAJjDuAOmCF
+MQvvfwdwAdT3KvV+G8ccCJ/AyAPosnp5pxKMjAOGAPaXetCQWU/hE+BrAH2b2YvBuILnMwcMAdQX
+e3tOEy83xhA+Ae4E0LD80JIYxuCN5V8Ae3ueeN3KKhPhE+AhzwRQBu5lXGoOQE2xt+ci8XJLboVP
+gO/FJ5MhgJaqwQC9FzwBkqTu9dTbU/gE2BlAtWBhaJbVe9vJzgBpUk+5FTyFT4CdATQsvX0mgDKg
+4KmlCkCCA3t7Xqqg8AkggDIWK8ET4CCLxOtKh7sJnwACKGMR3r+CJ8Bh5onXmfUUPgEEUEYTPJ85
+3h8g3fX8fJal9/a031P4BBBAETwBqCV11jNseSiVT/gEEEAZskLwBDhc7O2Z2mLlowoKnwACKEMW
+TrUVPAGaEYLnWcJ1Gz2VhU8AAZShB0+HCwE0J3nJrdIJnwBtBNBSNRA8AYYl9vacJV6eq6DwCdBG
+AP01uzncBU7ljeAJ0LjUvZ6ht2ehfMInQBsBNCy9DTOgvmg4hZfVe/C9MgA07lXidWY9j+QHJQDG
+7Hp+/lf1slAJjuDLQ484+w5As9/nF9XLP4mX/6zFynGY+QRGLS59fKMStOzLcm/BE6A1qbOeheAp
+fAIcM4CGJZC/Z07CpR3hBMVnBjcArUrd72nJrfAJcPQA+iUgZA4iolnvqvfW73p4ArTnen6+yBJ7
+e2ZarAifACcKoLetWJaqwYHCgCaEzrdKAdC654nXrTwcPC4HDgE84Hp+/rp6+VMlSHAVg2epFACt
+f19Pq5d/Ey9/psXKcZn5BHhA3Aca+oEKEOzjffXe+VXwBDgavT2FT4BBBNCrGECXqsEOt8tsnZwM
+cFypp9za63kClt0C1HA9Pw9PVkNP0DPV4J4iBk/7hgCO+92st2fPmPkEqCGehvtrDBoQhLD5pnpv
+PBM8AU5innjdleApfAJ0PYCG/SHhNNw3mZ6gY1dUP7/GvcEAnMYi8bpLpRM+AfoSQm8PI7JfZHy2
+ZztL5QA4jbgdJnUrjO9v4ROgVwE0zIL+Xv1l+BFCxiEMVn422wnQCalLbpe2SgifAH0Nobd7Qd+p
+xmCV2U0vOIcKAXTA9fw8zHimtlj5qIKn47RbgOa+DKfZzYm4M9UYhBA0L6vA+VYpADr1ffu6evkz
+4dKwaulnFTwdM58ADdk6kCj8lCrSa8vsZomt4AnQPalLbu31PDEznwAtuZ6fL6qXP6qfqWr0KnS+
+c5gQQGe/Ww/p7RlOKb9SReETYMhflK9jCD1Tjc4qYugslAKg09+pYbnt64RLQ2/PX1XwtCy7BWhZ
+PB017DEJhxKVKtK50Pkstk4RPAG6L/WgoVzpTs/MJ8CRWY7bCcvs5jAhy68A+vP9GYLnh8TLf3Ri
++en9VwkAjqv68gvBZxm/RF9lTsc9ls1W6CyVA6B3nidetxI8u8HMJ8CJxcMTQggNYdS+0OaFoPnO
+4AOg19+V4fvx/xIv/z325Ub4BGDri/V2NvRCRQ4SQmYYaOT2cgIM4jtykd300t77+6D6HvhRBbvB
+sluAjoizcsvsZkluCJ/zGEanqlNbCJrhUAmznADD8irxuqXSdYeZT4COq4LobCuIWpb7vautwFkq
+B8Dgvgen1cu/iZfr7Sl8ApD4BXw7IxoC6ZiX5oYltR+rn0LgBBj8d19qb8+y+o74WQW7w7JbgB6J
+T2+v4pfxNIbQ5/F1yLOi4c9cVD+fHBoBMDqpvT0vla5bzHwCDEScFQ0h9Jf4Ou3xH+dL0LwNnfZv
+Aoz2uy18n/2dePnPVsd0i5lPgIHYnhWNX9hhJvQ2kP4U/7prS3U38XcOP5/Dq705AGyZJ17nHIAO
+MvMJMDJxue40BtEQUH+Jr2cthdMivoZQeR1fN1qgALDj+yp8L/2bpW0reVl9zyxVUfgEoB9f+KlB
+dGP2EoAGvosWmd6eg2LZLQDfiXssC5UA4ISSl9wqXTf9RwkAAIAu2TrRPYVTboVPAACAWhaJ15W2
+fgifAAAAdaUuuTXrKXwCAADsFnt7ThMvt99T+AQAAKglddaz0NtT+AQAAKjrReJ1udIJnwAAADvF
+3p5nCZeGFmGW3AqfAAAAtTxPvG4Ve1QjfAIAADwu9va05Fb4BAAAaFVq8Ay9PQvlEz4BAADqeJV4
+nVlP4RMAAGC36/n5RZbe23OpgsInAABAHamznld6ewqfAAAAdaXu97xUOuETAABgp+v5eQieZ4mX
+6+0pfAIAANQyT7xuqben8AkAALDT9fw8zHimLrn9qILCJwAAQB2LxOtCb09LboVPAACAWlKX3Aqe
+wicAAMBusbfnReLlTrkVPgEAAGpJnfXU21P4BAAAqG2ReF2udMInAADATgf29lyqoPAJAABQx/PE
+61Z6ewqfAAAAO8XenovEyy25FT4BAABqeZF43UZvT+ETAACgrleJ1y2VTvgEAADY6Xp+Ps3Se3ta
+cit8AgAA1JI66xl6e14pn/AJAABQR+p+T7OewicAAMBusbfnNPHypQoKnwAAAHXo7Sl8AgAAtOfA
+3p4fVVD4BAAAqOOQ3p5L5RM+AQAA6pgnXrdSOuETAABgp9jbc5Z4+aUKCp8AAAB1LBKvK/X2FD4B
+AADqSl1ya9ZT+AQAANjten4+y9J7e9rvKXwCAADUknzQ0CRfl8onfAIAADwp9vZMbbGit6fwCQAA
+UEsInmcJ120yS26FTwAAgJqeJ14XltxulE/4BAAAeFLs7Zm65DZXwWH6rxJAJ27QYUnKxdZ/FP76
+TGUAkoQZk+3egKWDS+DoUoNn+LwWyid8As2EzFkMl79kN0ePX6gMQOv33y+D2vgTgunn8KqBPbTm
+VeJ1Zj0H7AclgFYHOxcxbP4SX6eqAtA5RfXzKYbSK7Ok0Mj455/Ey3/2GRwuM5/Q3I02BMtws/0t
+vs5UBaAXZtv37Op+XsYg+imG0UKJYC+ps56F4Cl8Ag+HzdvByi8xbE5VBWAQpvHnRbzfZzGMhhD6
+2QAZdnLQEA+y7BbqBc1pdnf5rH2aAOO22Q6j2c0MqdYQGDPNzxfVy1+Jl//ocyR8wthumrcnz4aQ
+ebuE1smzAOxyld1druswI8Y4jvqQpc18LqvPzEsVFD5h6DfJ7UOBLjKzmgA0p8i+HWZUmNVh4GOq
+8LD+/xIv/736fKxUUfiEod0UZ9m3g4FmqgLAEZXZt+W6DjNiaOOs19XLnymfi+qz8LMKDp8Dhxj6
+TXA7aDoUCIBTC99Di63vqSyG0e3luqUy0VPzxOvMeI6EmU+GFDTDF3oIm7fLZ2eqAkAP3TnMyOwo
+PRmH6e2J8Mlgb3DbhwLdnkDrUCAAhsphRnR9bBaW275OeW9X7+dfVVD4hC7d0G4PArpdPutQIADG
+bLMVRotMqxdOP1YLBw2lTAS8rN67SxUUPuFUN6/7hwJpdQIAu5XZ3eW6Zkc51tgttFb5kHi53p4j
+4sAhunDDug2at8tnp6oCAHsL35+Lre/XLHOYEceRetDQUvAcFzOfHDtoTrO7M5ozVQGAoyljGHWY
+EU2N7fT2RPikMzekWeZQIADoshBGi61AWioJe4z1Unt7bqr32o8qOC6W3dLkzef2IKDboOlQIADo
+vjsH+VXf5w4zYh/JS26VbnzMfJIaNLdbnTgUCACG7bbVi8OM2B4PTquXfxMv/9X7aHzMfFL35nK/
+p+ZUVQBgNO7PjoaXIosHGcVAanZ0fF4lXqdXrfAJX79QpltfMr9lDgUCAL432x4jVOOHMrt7sm6h
+RIP3IvG6XOnGybJbtlud3C6fnaoKANCAIru7XLdUksGMH/X2ZG9mPsd3owjBMoRNhwIBAG2bZXdn
+RzfZ1sm6mcOM+ux54nUr/87Hy8znsIOmQ4EAgK67PczodrmuvYD9GGPq7YnwOfIbwfY+zTsHAwAA
+9MR2qxeHGXVzzLmoXv5K+Xert+e4WXbb3w99eOI0yxwKBAAMy+0YZ7Y17imzb8t1HWZ0eqmn3Jrx
+HDkzn/0Jm9tB06FAAMDYhQC6vVy3VJKjjEnDGFRvT4TPgX2oQ9j8Jfu2ZxMAgMfdOczI7Ghr49S3
+1csfCZeW1b+Tn1VQ+OT0H+JZdvcEWocCAQAc7iq7u1zXrNvh49Yw6zlNuPRNVf/3Kih8ctwPrEOB
+AABOY/swoyLT6mXfceysevk78fKfLY1G+Gz3A3r/UCCtTgAAuqXM7i7XNTv6+Ng2nHC7SLg09Pb8
+XQURPpv9QN7uz7xdPjtVFQCA3glh9LbVi8OMsq+TKmHJbcpEysuqhktvK4TP9A9gCJbbM5ozVQEA
+GKQyu3uybjHCse8i09uTA+nzWf8DN8vunkA7VRUAgFGYxp8XcVyYZXcPMypGMDs6T7xOb0++MvP5
+cNC8PQjodvmsQ4EAAHjKYA8zOrC35zNtbxA+v32YzrJvy2YdCgQAQFOusrvLdXt5mFE1Xn5dvfyZ
+cKnentwxumW39w4F0uoEAIC23I41F3EcGl6K7NthRkVPZkdfJV6XewuwbdAzn1uHAt0eDDTzrxwA
+gA4psw4fZhQnbv5JvFxvT4YbPuOhQNsn0E79KwYAoGeKGEhPfpjRAb09w+/9zL9KtvV22W2c1Qxh
+06FAAAAMySzbWrFXjXs32d2TdYsj/i4vEq+z5Jbv9GLm896hQLdh06FAAACMVeuHGR3S2zO7WXK7
+8a+JbZ2d+YxLaJ9nZjUBAOC++4cZ3c6Ofqx+Vg0Fv+eJ160ETx7SqZnPuKF5Hj9EZjYBACAxAIYg
+WoXAZeK4fJrp7ckQw2ec0g9HOJvhBACA5oQZyMvqZ7nPwUV6e9KG/5w6dFY/4YnKX4InAAA0Lqwm
+/KP6+TecXBtnNOtI7e25UnIec5KZzzjTGT4EU/8KAADgaG5nQt8/ti9Tb0/actSZz/Ckpfr5O7uZ
+6RQ8AQDguG5nQv+pxuWPtVGZJ/6zrwRPOhE+qzf32+xm0/JM2QEA4KSm1c+Haoz+IbY13LZI/Gde
+KitPaX3ZbVxX/iGzpxMAALooLL99OcnXqzgb+iHxn/OjFiucLHzGN29YYqttCgAAdNv77GZG9EXC
+teE03ZdKyFP+22LwfJvdrCcHAAC67/UB135UPnZpZeYzHOOcpa8VBwAA+kNvT2ppdOYzblYOp9na
+3wkAAOOgtye1NHbareAJAACjlCsBRwufgicAAIxS6O15pQwcJXwKngAAMFpmPTle+Kz8KXgCAMAo
+LZWAo4RPp9oCAMBorSb5eqMMtB4+q+C5EDwBAGC0LLllL0l9PqvgGZbZ/qN8AAAwSptJvv5RGdjH
+3jOf8YChD0oHAACjtVQCWg+flbDPc6p0AAAwWos4KQXthM/qDfaienmhbAAAMGoheP6lDOyj9p7P
++GTj3/hGAwAA+H2Sr1fKQB37zHz+KXgCAABb/rL8lkbDZ/WGmmXaqgAAAHeF4PmnMtBY+PSGAgAA
+HrGIk1VwWPis3kiL6uVCqQAAgEf8oQTs8sOO4Bmm0f/JtFYBAACe5vAhnrRr5vO14AkAANRgqx5p
+4TPOer5SIgAAoIZp3LIH+4XPyotMaxUAAKA+ez9JCp/eOAAAwD6mTr5lr/BZvWHCrOdUeQAAgD2Z
+xKJ++Mzs9QQAANLMrufnU2VgZ/iMb5SZ0gAAAIlMZrE7fFYWygIAABxApqBW+JwrCwAAcICzeI4M
+PBw+qzfIReagIQAA4HDPlYBHw2dm1hMAAGiGmU+eDJ/eIAAAQBMsveXh8GnJLQAA0DBLb/k+fGba
+qwAAAM2SMXgwfP6mHAAAQIOmcYUl3Amf1mMDAABNmykBX8OnpxEAAEBLrLDkW/jMPI0AAADaYaKL
+O+HzF6UAAABaEPZ9TpWB2/DpaQQAANAWeQPhEwAAED45Qvh02BAAANAy2/z4MvM5VQYAAKBFMgdf
+wqeZTwAAoE0yB1/C50QZAACANl3Pz89UQfj0FAIAAGib3CF8AgAAQPvh0xMIAACgbTMlED6tvQYA
+AKD18AkAAADCJwAAAMInAADALr8ogfAJAADQNmfNCJ8AAAAgfAIAACB8AgAAgPAJAACcXqkEwicA
+AEDb/qcEwicAAAC0Hj5LZQAAAED4BAAA+u5KCYTPjTIAAAAtkzuEz+yzMgAAAC0rlUD49CYAAABa
+NcnXcofwKXwCAACtKpSA/0zytTcCAADQplIJuO3z6eQpAACgLc6ZQfgEAABaJ2/wNXx+UgoAAKAN
+tvqxHT69GQAAgDbIGnwLn/HY41I5AACAhlllybfwGa2UAwAAaJicwXfh0xMJAACgSeUkXztsiLvh
+s3pThCcSGyUBAAAaYtaT78OnNwcAANCwXAl4LHx6cwAAAE2w5JbHw2fsv1MqCwAAcCATWzwePqNL
+ZQEAAA60VAJ2hc/wJnHwEAAAkBw8J/m6VAaeDJ/Vm2STeUoBAACks+SW3eEzsvQWAABIUcSzZGB3
++IxT5O+VBwAA2NM7JaB2+Nx609j7CQAA1GXWk/3DZ9z7afktAABQ10slYO/wGQPo20zfTwAAYLf3
+TrglOXxGnl4AAABPCaHTXk8OC59xzfZSqQAAgEe8idv2ID183r6ZMstvAQCA7y2r4LlSBhoJn/Ep
+huW3AADAtjK7maiCZsJnDKCFNxYAABCFCarfLbel8fAZA+j7zP5PAADgZp/nlTLQSvi8fZNVP95k
+AAAwXqGtylIZaDV8xmn1ZwIoAACMUjhgyHY82g+fAigAAIw6eDqIlOOFTwEUAAAETzhK+BRAAQBA
+8ISjhM97AVRjWQAAGJ43gidN+KHJf9j1/Pxt9fKHsgIAQO+FSaaXVfA0yUT3wmcMoLPq5UP1c6a8
+AADQS2Fb3e9V8CyVgs6GzxhAQ/D8q/p5ocQAANAbYbbzsgqdb5WCXoTPrRA6iyF0qtQAQE+V1U9R
+/fxvx9/3W41/1kw56bCwvPaN2U56GT63Qugiu9kLKoQCAH2wiQPxMAN01FP948P7Q0PspPq52PH3
+nNX4exiHovp5V73XC6Wg9+HzXgh95UYHAHSY2Z9vY7c6AbXO31MnDE8zExWneK9fCp0MMnxu3cjC
+zWee3ewJdZMBALpgE0PnUik6G4brBNQ6f89PDf1z+ijM5OcheHrAwijC5wNBNITQsE8i/LVTcgGA
+UwTPZ8deYkvvw3CdsWudv+eXhv45DwkBs6h+PoVXgZNRh88HPsS7lm6kfPDqPN26zz4IABA8obdh
+2HJahM/hf+hnCZelXFPnCdl908wyZwC475lBOoDwyenDdMoMcOqs8W8J11iqDcAhwh7P98oAIHxC
+G4F6mu0/A5xyjX3MAN0W9r89UwYA4ROGEnZvT3deCKIAnRH2ef7q8BUA4ROGGkTfZje9boVQgNN6
+VwXPt8oAcDz/UQI4njjQ+TW76bEFwGmEWU/7PAGETxh8AC2rnxBAl6oBcBKX1X14owwAwieMJYS+
+FEABjs6sJ4DwCaP0JrMEF+CYzHoCCJ8wPnEA9FIlAI5mqQQAwieMNYCGmc93KgHQupXWKgDCJ4xd
+2H9kQATQrlwJAIRPGLW4/NbsJ0B7NtW9dqUMAMInkGVhUOQQDID27rEACJ9AnP1cqgRAKz4qAYDw
+CXxjPxJACyy5BRA+gbuDo3DybakSAI0SPAGET8AgCaB1n5QAQPgEvmdfEkCzPNQD6IAflAC653p+
+/v9UAaAR5SRf/6wMAKdn5hO6qVACAPdTAOETaJv9SQDN+KwEAMIn8LgrJQBoRKEEAMInIHwCtGkT
+W1gBIHwCD6kGS6UqABxM8AQQPoEaCiUAOIj98wDCJ1BDqQQABzHzCSB8AjX8TwkAhE8A4RMwaALo
+ro398wDCJ1Bz4KQEAMk8wAMQPoGaSiUAED4BhE+gVZaLARzEvnkA4RPYg6W3AGnMfAIIn4DBE4D7
+J4DwCQDQb+GkWytHAIRPYA+lEgDszawngPAJ7MmBGQDCJ4DwCQDQQddKACB8Avvx9B5gf4USAAif
+wH4cmAHg3gkgfAIAdM0kX1s1AiB8Anvy9B5gP4IngPAJ7MvTe4C9eWgHIHwCALTukxIACJ8AAG0z
+8wkgfAKJCiUAqM12BQDhEwCgdaUSAAifAACtmuRr4RNA+AQSWUIGUI/gCSB8Age4VgIA4RNA+AQA
+6AYrRQCET+AApRIA1GKlCIDwCQifAK0rlABA+AQAaNtGCQC66wclgO67np//P1UAeNokXxvXAHSY
+mU8AYAhKJQAQPgGDKgD3SQDhEzCoAui9T0oAIHwCh3OIBoD7JIDwCbTusxIAPOlKCQCET+BwnugD
+CJ8AwidgUAVwQptJvvaQDkD4BBpQKgHAozygAxA+gSZM8rXwCfA4J90CCJ9AgwolAHhQqQQAwidg
+cAXQNstuAYRPoEHarQA8YJKvhU8A4RNokMEVwPcKJQAQPoEGTfK1ARbA9xw2BCB8Ai0QQAHusioE
+QPgEDLIA3BcBED6hjywvA/im1AcZQPgE2uEJP4B7IoDwCbQrPuHfqATAF1pQAQifQIsKJQBwPwQQ
+PoG2edIPkGlBBSB8Am0z2AKw3xNA+AQMuACOoFACAOETaNEkX28EUABbEACET+AYhE/AfRAA4RNo
+3SclAEZsM8nXwieA8AkcgUEX4B4IgPAJtMsTf2DkrP4AED6BIyqUABgpD+AAhE/giDz5B8aqUAIA
+4RM4Hk/+gTEqY8spAIRPQPgEaE2hBADCJ3BEk3xdVi+lSgAj81kJAIRP4PjMfgLuewAIn0DrHDoE
+jMokXxeqACB8AsdnBgAYE8ETQPgETsEMADAyHrgBCJ+AwRhA62w1ABA+gRMqlAAYCQ/bAIRP4IS0
+HQDGYBNbTAEgfAInYiYAGINCCQCET+CEJvk6hM+NSgADZ5UHgPAJdIDZT2DoCiUAED6B03MCJDB0
+HrIBCJ9ABxRKAAw5eE7yte0FAMIn0IWBmRIA7nEACJ9Aq+KMQKkSwEDZWgAgfAIdUigBMFBmPgGE
+T6BDtCEABim2lAJA+AQ6olACwL0NAOETaJWZAWCg7PcEED6BDiqUABgYD9YAhE/AIA3AfQ0A4RPG
+yPI0YEjKSb4ulQFA+AS6xwwB4J4GgPAJtCvOEGxUAhgIqzkAhE+gwwolAAbCzCeA8Al02GclAIZg
+kq8LVQAQPoHuMlgDhsCsJ4DwCXSZmQJgINzLAIRPoAfMGAB9ZwsBgPAJCJ8ArSuUAED4BLpPewKg
+zzaxdRQAwifQcWY+AfcwAIRPoF2TfG3gBvSZ1RsAwifQI4USAO5fAAifQNvMHAB9ZfUGgPAJGLwB
+tKqc5OuNMgAIn0B/FEoAuHcBIHwCrYozB6VKAD3zWQkAhE+gfyy9BfqmUAIA4RPoH4cOAb2iVRSA
+8An0k0Ec0CeFEgAIn0APTfK1gRzQJx6YAQifgMEcQOtsFQAQPoEeK5QA6AkPywCET6DHtC0A+mAz
+ydelMgAIn0B/FUoAuFcBIHwCrYozCRuVADrOKg0A4RMYAPuogK4rlABA+AT6zwmSQKdpDQUgfALD
+YFAHdJnVGQDCJ2BgB+AeBYDwCdQwydcbgzugw2wNABA+gQERPgH3JwCET6B12hgAnTTJ18IngPAJ
+DEihBIB7EwDCJ9AqMwtAR9nvCSB8AgNUKAHQMR6MAQifgEEeQOsKJQAQPoHhsbwN6JIytoICQPgE
+BsbMJ+CeBIDwCbRrkq/L6qVUCaAjrMYAED6BATPTALgfASB8Aq37rARAF0zydaEKAMInMFwGe4B7
+EQDCJ9AuMw1AR1hyCyB8AgZ9AK2zBQBA+ASET4DWFUoAIHwCw6e9AXBKm9j6CQDhExg4M5+AexAA
+wifQrkm+DgO/jUoAJ2L1BYDwCYyImQfgVAolABA+gfEw8wCciodfAMInYPAH0O69Z5KvLfsHED6B
+ESmUADhF+FQCAOETGJE481CqBHBkn5UAQPgExqdQAsB9BwDhE2ibGQjgqGKrJwCET2BkDAKBYyqU
+AED4BEZokq8NBIFj8sALQPgERkwABY5Ff2EA4RMYMTMRgPsNAMIn0DqHDgHHUE7ydakMAMInMF6F
+EgBHYNYTQPgExizORGxUAmiZVRYAwieA2U/AfQYA4RNonxkJoFVaOwEgfAKBQSHQJvs9ARA+AQND
+wD0GAOETOIJJvt4YHAIt+qQEAAifwC3hE3B/AUD4BFrn0CGgDZtJvhY+ARA+ga8KJQBaIHgCIHwC
+35iZAFpivycAwifwnUIJgIZ5sAWA8Al8xwwF0LRCCQAQPoH7zFAATSpjKycAED4B4RNoTaEEAAif
+wHcm+bqsXkqVABqihRMAwifwKLOfgPsJAMIn0DozFUAjJvm6UAUAhE/gMQaLgHsJAMIn0C4zFUBD
+LLkFQPgEDBqB1lnCD4DwCexUKAHgPgKA8Am0zYwFcIhNbN0EAMIn8CTLboFDFEoAgPAJ7DTJ1yF8
+blQCSGT1BADCJ1Cb2U8gVaEEAAifQF2flABI5OEVAMInUFuhBEBK8Jzka8v2ARA+gfoDSCUA3DsA
+ED6BVsWZi1IlgD05bAgA4RPYW6EEgPsGAMIn0DYzGMBeYqsmABA+gb0YRAL7KJQAAOET2NskXxtI
+AvvQogkA4RNIJoACdVktAYDwCRhMAu4XAAifQHdZRgfUUU7ydakMAAifQCozGYB7BQDCJ9CuOJOx
+UQlgB6skABA+gYMVSgDsYOYTAOETONhnJQCeojUTAMIn0ASDSuApZj0BED4BA0ugdYUSACB8Ageb
+5OuNAAo8wdJ8AIRPoDHCJ+D+AIDwCbROGwXgIZtJvhY+ARA+gcYYXALuDQAIn0C7zGwAj7AqAgDh
+E2hcoQSA+wIAwifQNjMcwH1WRQAgfAIGmUCrytiKCQCET6BRhRIA7gkACJ9Aq+IMR6kSQPRZCQAQ
+PoG2WHoLuB8AIHwCrXPoEPDFJF8XqgCA8Am0xUwHEAieAAifQHvMdACRB1EACJ+AQSfQOkvwARA+
+gdYVSgCj5yEUAMIn0DrtFWDcNpN8XSoDAMIn0LZCCcA9AACET6BVccZjoxIwWlY/ACB8AkdjvxeM
+V6EEAAifwLE46RLGy8MnAIRP4GgKJYBxBs9JvrbsHgDhEzjeAFQJwGcfAIRPoFVx5qNUCRgdS+4B
+ED6BoyuUAEbHzCcAwidwdNotwMhM8rXwCYDwCRxdoQTgMw8AwifQKjMgMDr2ewIgfAInUygBjIYH
+TgAIn4DBKNC6QgkAED6BU7EMD8ahjC2WAED4BE7CzCf4rAOA8Am0a5Kvy+rFbAgMn1UOAAifwMkV
+SgCDZ+YTAOETOLnPSgDDNsnXhSoAIHwCp2ZQCsNm1hMA4RM4PTMiMHg+4wAIn0BnmBmB4bK0HgDh
+ExA+gdYVSgCA8Al0hTYMMEyb2FIJAIRPoBPMfILPNgAIn0C7Jvk6DFA3KgGDY1UDAMIn0DlmSGB4
+CiUAQPgEusYMCQyPh0oACJ+AQSrQqnKSry2nB0D4BDqnUALwmQYA4RNoVZwhKVUCBuOzEgAgfAJd
+ZektDEehBAAIn0BXOXQIBiK2UAIA4RPoJINVGIZCCQAQPoHOmuRrA1YYBg+SABA+gc4TQKH/LKEH
+QPgEOs+MCfgcA4DwCbROewbot3KSr0tlAED4BLquUALoNbOeAAifQPfFGZONSkBvWb0AgPAJ9IaZ
+E+ivQgkAED6BvnBSJvSXh0cACJ+AwSvQqnDYkGXzAAifQH8GsEoAPrsAIHwCrZrkazOf0E+WzAMg
+fAK9UyoBAADCJyB8AvcVSgCA8An0jUNLAAAQPoHWaVQP/WO/NgDCJwDQLm1WABA+AeiSQgkAAOET
+EFBom3Ycw2TWEwDhEwBonf2eAAifAHRKqQQAgPAJQJuuhE8AQPgEoG32BQIAwicAAigAIHwC0H/l
+JF87mAYAED4BaNX/lAAAED4BAAAQPgHovdv9npbeAgDCJwCtuboXQgEAhE8AAACETwD6q1QCAED4
+BKAVk3xdxL906i0AIHwCAAAgfALQfw4cAgCETwBacfXIXwMACJ8ANMZsJwAgfAIAACB8AtB/X2c+
+t069BQAQPgFo1GclAACETwAAAIRPAAanVAIAQPgEoGmF8AkACJ8AAAAInwAMjr6fAIDwCUDjru79
+/06/BQCETwCaNcnXZjoBAOETAAAA4ROAfisf+M8KZQEAhE8A2g6fAADCJwAAAMInAP13pQQAgPAJ
+QJM+3f8PnH4LAAifAAAACJ8ADEapBACA8AlAU66ETwBA+ASgbfZ3AgDCJwAAAMInAP1XPvKff1Ia
+AED4BKARk3xdqgIAIHwCAAAgfALQa08dNnSlPACA8AlAE64SgykAgPAJAAD8f/bu9jhu6wrAMFLB
+qoNIbiBSBQk7sCtQVEGiCixVEKkDooJQFRhbQcAGNpcdLDsIYIK26PBjsQsscO59nhmOftgil2el
+Gb66wAGITwBiSEYAAIhPAKbw5ONUbMEFAMQnAAAA4hOAbFg6BACITwBOll747x63AgCITwBmj08A
+APEJAACA+ARg/V66p9NltwCA+ATgNJt691Jc3poSACA+AQAAEJ8AhJeMAAAQnwCcohGfAID4BAAA
+QHwCUIS9EQAA4hOAU7z4GJUDtuECAOITAJ7lMSoAgPgEAABAfAIQ36H3czZGBQCITwCO5X5OAEB8
+AgAAID4BKIcTUgBAfAJwnE29aw78X23FBQDEJwAAAOITgPj2RgAAiE8AjtHO9P8CAOITAH7jNBMA
+EJ8AAACITwDiS4f+jyO24gIA4hMAHrgxAgBAfAIAACA+AQhv7MIhG28BAPEJwGhjY9J2XABAfAIA
+ACA+AYgvGQEAID4BGGvsZbe24wIA4hOAcTb1zj2cAID4BAAAQHwCEFs64vc0xgYAiE8A5o5PAADx
+CQAAgPgEYF2OWTbUGhsAID4BGON67G+wHRcAEJ8AAACITwCykYwAABCfAByqEZ8AgPgEAABAfAJQ
+LEuHAADxCcDB0pG/79roAADxCcBBNvUumQIAID4BAAAQnwCEdsp9m43xAQDiE4BDtEYAAIhPAAAA
+xCcARUtGAACITwAOsT32N9qSCwCITwAAAMQnANnYGwEAID4BeEm78O8HAMQnAAVwcgkAiE8AAADE
+JwDxpRN//9YIAQDxCcCzPC4FABCfAAAAiE8AqGy7BQDEJwAvaCb4HLblAgDiEwAAAPEJQHxOPgEA
+8QnAs06+X3NT79zzCQCITwCedWsEAID4BAAAQHwCEF6a6PM0RgkAiE8A5o5PAADxCQAAgPgEYDlT
+PSbFxlsAQHwC8LgJH5Niay4AID4BAAAQnwDEl4wAABCfADxmyvs0xScAID4BeNTeCAAA8QkAAID4
+BCC8NNUn2tS7xjgBAPEJwGNujAAAEJ8AAACITwDCm3rhUGukAID4BGDuWLQ9FwAQnwAAAIhPAOJL
+RgAAiE8AHpjh8Si25wIA4hMAAADxCUB8Fg4BAOITgAfSDJ/To1YAAPEJwOzxCQAgPgEAABCfAJzX
+5PdnzrA9FwAQnwAEd20EAID4BAAAQHwCwBOSEQAA4hOAe434BADEJwAAAOITAJ6wNwIAQHwCcK+d
+6fPaogsAiE8A7mzqnRNKAEB8AgAAID4BiC3N+Lkb4wUAxCcAc8cnAID4BAAAQHwCEF9rBACA+ASg
+t53rE9uiCwCITwAAAMQnANlw+gkA4hMAZr8v032fACA+AcDJJAAgPgEAABCfAGQgzfz5t0YMAOIT
+gMJt6l0yBQBAfAIAACA+AQjtHMuGbLsFAPEJQOHOEYa26QKA+AQAAADxCUB8yQgAQHwCULbZL7u1
+TRcAEJ8A3BoBACA+AciFpUMAID4BKFg609fxuBUAEJ8AiE8AAPEJAACA+AQgsHPdi+myWwAQnwCU
+alPvzhWFtuoCgPgEAAAA8QlAfMkIAEB8AlCmRnwCAOITAAAA8QkAI+yNAADEJwBlOtvjT864VRcA
+EJ8ArIzHnwAA4hMAAADxCUB8574PszFyABCfAJTHfZgAgPgEAABAfALAWMkIAEB8AlCYTb1rzvwl
+b0wdAMQnAAAAiE8AwtsbAQCITwDK0hbyNQEA8QnAgpxCAgDiEwAAAPEJQHzp3F9wge26AID4BGBh
+HnsCAIhPAAAAxCcAHMvGWwAQnwAUpFno69qyCwDiEwAAAMQnAPElIwAA8QlAOZa699KWXQAQnwCU
+YlPv3HsJAIhPAAAAxCcAsaUFv3Zj/AAgPgEQnwAA4hMAAADxCUAMSy4bao0fAMQnAGW4XuoL27IL
+AOITAAAAxCcA2UhGAADiE4D8NeITABCfAAAAiE8AOJGlQwAgPgEoQFr46197CwBAfAKQuU29S6YA
+AIhPAAAAxCcAoa3hfsvW2wAA4hOAvK0h/CwcAgDxCQAAAOITgPiSEQCA+AQgb9ulX4BtuwAgPgEA
+AEB8ApANS4cAQHwCkLHW6wAAxCcAc3PiCACITwAAAMQnAPGt5eRz660AAPEJQKY29c69lgCA+AQA
+AEB8AsBUnMACgPgEIFPNil6LrbsAID4BAABAfAIQn5NPABCfAGRqNfdZ2roLAOITgHzdGgEAID4B
+AAAQnwCEl1b2ehpvCQCITwDEJwCA+AQAAEB8ArA+a3u8iY23ACA+AcjNCh9vYvsuAIhPAAAAEJ8A
+xJeMAADEJwB5WeP9leITAMQnAJnZGwEAID4BAAAQnwCEl9b2gjb1rvG2AID4BCAvN0YAAIhPAAAA
+xCcA4a114VDrrQEA8QlAPtYaebbwAoD4BAAAAPEJQHzJCABAfAKQiRU/1sQWXgAQnwAAACA+AYjP
+wiEAEJ8AZCKt+LV51AoAiE8AxCcAgPgEAABAfAKwEqu9r3LFW3gBAPEJwEjXRgAAiE8AAADEJwDM
+LBkBAIhPAOJrxCcAID4BAAAQnwAws70RAID4BCC+duWvzzZeABCfAES3qXdOFgEA8QkAAID4BCC2
+FOA1Nt4mABCfAIhPAADxCQAAgPgEgJe0RgAA4hOA2LZrf4G28QKA+AQAAADxCUA2nH4CgPgEILDW
+6wQAxCcAc3OiCACITwAAAMQnAPGlIK9z660CAPEJQFCbepdMAQAQnwAAAIhPAEKLtGzItlsAEJ8A
+BBUp6GzlBQDxCQAAAOITgPiSEQCA+AQgpjCX3drKCwDiE4C4bo0AABCfAPCQpUMAID4BCCgFe70e
+twIA4hMA8QkAID4BAAAQnwAsINo9lC67BQDxCZB9+GRnU++ixZztvAAgPgGyDx8AAMQnAAVIRrCo
+rREAID4BGKsRnwCA+ARK4b5PAADEJzA7930yhn+sWFYyAgDEJwDZh78lVeITAPEJ4IfZeDy2BAAQ
+n0AxbowAwnDyDID4BMJKRrCYqPdPNt66ZWzqnXtuARCfgPhkNKdY+PMCgPgExCewKk49ARCfQFyb
+eic+GcufmWVsjQAA8QlE53K+ZcK/CfrSLalahpNPAMQnEF4yAlg9/0gEgPgEwrs2AkZwAic+ARCf
+AEdpjEBIiKB1B7/HrAAgPgEhxFExYQT4OwqA+ASKMpyoJJOA1bLpFgDxCWTDycp5hY39wFt6/f0E
+APEJrICTlfPyuBLGEPwAiE8gG05WYJ2SZUMAiE8gGy6lZCT/WHE+/m4CID4BP+RS7KydxJ2PS+IB
+EJ9Adr4ZAaxOYwQAiE/AD7mUKhnBWbSbemfWAIhPIC/dD7mtqDhfVAR//bb1nkdjBACIT8APu5wS
++u6Z5BAuhQdAfAJ+2AVmtbeFGgDxCWSr+2H3qrLJdG4pg+9BFM3vyggAEJ+AH3opPT6Zn6sQABCf
+gB96gVnth6sQAEB8Avly6e38YZHB99B6G2clPAEQn4AffjnZdfRvwLbe2bn6AADxCRSjNgJYRHLJ
+LQDiEyjG8IiHZBI8F0lGMAv/8AOA+ASK89UIZtGIT55xaQQAiE/AD8HAnK429U7UAyA+gbIMS2UE
+KE+xdGh6LrkFQHwCxXLp7fRSJt/Htbdy2j8XFg0BID6BYnU/DPfPc2xMYtKZJlPgEZ+NAADxCfih
+GJhTfwmzU08AxCdQtuGxK61JTBYZufBnYjpfh3usAUB8An44NgLBlnFILz3HL8YAgPgEqH49/bys
+PNcR5uDUEwDxCfAHH4yA7yQjOJlTTwDEJ8AfDfd+NiZxkm1Gfx7E5+mcegIgPgGeYPMtTKOPd6ee
+AIhPgMcMp58eCcE9p3bH++zUEwDxCfC8j6LjaK3vh04zLPECAPEJ8JThXj+PXjmOaKfn8nUAxCfA
+gQH6qbLtFI7xZbh8HQDEJ8CBPHplvNxOPrfe0tHvv1NPAMQnwBjD6Y1tneNm5h7Jsn2wZAgA8Qlw
+nP4UJxkDvOiqC0+bogEQnwDHGE5xXH5bLie5h/H3BADxCTBBgDaVy28P0WQaVbzM5bYAiE+AiQK0
+f/anUzD4f19cbguA+ASYVn9ZodOdsni/n9cO/zADAOITYCrDJlf3tT0TIpm+5zwd5j8ZAwDiE2Ce
+GOkvL3T/5+NujaAo/X2eyRgAEJ8A8wVof5mhe9wo2Uf3eQIgPgHOo7/81iWZD6VMv6/GW/vAZRee
+Tv8BEJ8A5zA8VqK/381Cmvzjk9/1C4bc9wyA+AQ4c4D2sXUhQCklPIc/7wAgPgEWCNBWgP4m1xm4
+vHoIz+HEHwDEJ8CCAfrBHLJ9LEnpW3x/vcRceAIgPgHWEV5XApRMw/PCI1UAEJ8A6wrQy8oSohyl
+gr/vi4xPtAEQnwChA7Q/AS3xHtCcA6XE+Ozfz3fCEwDxCbDuAC1xCZHT3rzC03IhAMQnQKAAfVfZ
+lCqsY7kUngCIT4B4AZqquxPQqwK+3Tbj97GUf0D40n2vH4QnAOITIGa47LuPfgnR58y/1dwfR5Iy
+/t762Oyj86O/sQCIT4D4EfqpynsTbpP5W9hm/H1dDJuaAUB8AmQSoP3lt+8yDbXcL03dZvg9XVYe
+pQJAQf5kBECJbt//8Kn75edMvp2mC5iLzN+v190v/83k27m/zPbK30QASuLkEyjScBluLttw6wLe
+r1TlcWLdB+cb4QmA+AQoK0Db7qMP0H7RS9R7QfdVGdt8o0d2H88/9cuvbLMFQHwClBuhX7pf3lR3
+9+BF87WUmBmW8qSA/zjQb1p+57QTgNK55xPgO7fvf3jb/fKv7uNvQcLmTUknad3782P3y7+DvNw+
+lj8PlwwDgPg0AoBHI6ePz59XHqEfh1Pb0t6bPj5/FJ0AID4BcovQ993H31f20q76+wcLfU9edb/8
+p/t4vaKXdX/vregEAPEJcFLw9KHzjyFCXy38cvoNvRclL64ZLo/+ZQXvRR+aX7uPS4uEAEB8Akwd
+Pv0ln/1p6BKXfhYfnisI0PtTzrp7Hxp/IwBAfALMHT+vhgD96/Dr3BF0Wd3d5+mE7ff34HV1t4Do
+7cxfKlV3zxn9ZmstAIhPgKVD6O0QoX+p7hYVTRWjaYhO0fP07P9Z3S2ImnLm/Snzto/O/pmwpgwA
+4hNgrUH0uro7kes//lzdLch5OyKQ+tj8NjzfkpfnfX8S/b46fEtx+u7jpro73UyWBgHA9P4nwABN
+Udu9U1wrEAAAAABJRU5ErkJggg=="  rel="icon" type="image/x-icon" />
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -16,14 +353,17 @@
 <style>
 .body-class{
   margin-top: 80px;
-  text-align: center;
+  /* text-align: center; */
 }
 .level_div{
   margin-top: 20px;
 
 }
 .level_t_align{
-  margin-left: 40%;
+
+}
+.cent-align{
+  text-align: center;
 }
 .level_div_part{
   text-align: justify;
@@ -62,6 +402,32 @@ option{
 } */
 .form-align-left{
   text-align: left;
+}
+@media only screen and (max-width: 600px) {
+  .ques-add {
+    background-color: #3F51B5;
+    /* gray; */
+    padding: 5% 5%;
+    margin-bottom: 60px;
+    margin-top: 30px;
+
+  }
+  .ques_analytics{
+    padding: 10px 0px !important;
+    margin: 0px;
+  }
+  table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 80% !important;
+      font-size: 9px;
+  }
+  td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 1px 1px;
+  }
+
 }
 </style>
 <style>
@@ -160,7 +526,9 @@ h4  {
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 100%;
+    width: 70%;
+    margin: auto;
+    font-size: 14px;
 }
 
 td, th {
@@ -187,225 +555,147 @@ tr:nth-child(even) {
       </li>
     </ul>
     </nav>
+
+
     <div class="container body-class">
-      <h1>Augli Assessment</h1>
-
-      <select id="outer">
-
-        <!-- <option value="option1">Level 1</option>
-        <option value="option3">Level 3</option>
-        <option value="option2">Level 2</option>
-        <option value="option4">Level 4</option>
-        <option value="option5">Level 5</option>
-        <option value="option6">Level 6</option>
-        <option value="option7">Level 7</option>
-        <option value="option8">Level 8</option>
-        <option value="option9">Level 9</option>
-        <option value="option10">Level 10</option>
-        <option value="option11">Level 11</option>
-        <option value="option12">Level 12</option>
-        <option value="option13">Level 13</option>
-        <option value="option14">All Questions</option> -->
-      </select>
-      <div class="level_div">
-        <!-- <h2 id="level_t">Level 1 </h2> -->
-        <div class="level_t_align">
-        <h4 class="level_div_part">Reading Score :
-            <span id="level_read_range"></span>
-        </h4>
-
-        <h4 class="level_div_part">Questions added :
-            <span id="level_question_added">  </span>
-        </h4>
-<!--
-        <h4 class="level_div_part">Level Vocabulary :
-            <span>
-
-                <select id="allow-vocab">
-
-                  <option value="option1">2018</option>
+              <h1 class="cent-align">Augli Assessment</h1>
+              <div class="cent-align">
+                <select id="outer">
                 </select>
-
-
-            </span>
-
-        </h4>
-        <h4 class="level_div_part">Cumulative Vocabulary :
-            <span>
-                <select id="Cumulative-allow-vocab">
-                  <option value="option1">2018</option>
-                </select>
-
-            </span>
-        </h4> -->
-        <h4 class="level_div_part">
-
-          <div class="dropdown">
-            <button onclick="myFunction()" class="dropbtn">Allowed level Vocabulary</button>
-            <div id="myDropdown" class="dropdown-content">
-              <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+              <div class="level_div">
+                <div class="level_t_align">
+                <h4 class="level_div_part">Reading Score :
+                    <span id="level_read_range"></span>
+                </h4>
+                <h4 class="level_div_part">Questions added :
+                    <span id="level_question_added">  </span>
+                </h4>
+                <h4 class="level_div_part">
+                  <div class="dropdown">
+                    <button onclick="myFunction()" class="dropbtn">Allowed level Vocabulary</button>
+                    <div id="myDropdown" class="dropdown-content">
+                      <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                    </div>
+                    </div>
+                </h4>
+                <h4 class="level_div_part">
+                  <div class="dropdown2">
+                    <button onclick="myFunction2()" class="dropbtn2">Allowed Cumulative Vocabulary</button>
+                    <div id="myDropdown2" class="dropdown-content2">
+                      <input type="text" placeholder="Search.." id="myInput2" onkeyup="filterFunction2()">
+                    </div>
+                  </div>
+                </h4>
+              </div>
+              </div>
             </div>
-            </div>
-        </h4>
+   <!-- </div>
+      clean
 
-        <h4 class="level_div_part">
+      <div> -->
+            <div class="ques-add">
+                <h3> Add Question </h3>
+                <h6> Choose level and then make question in respective readability and vocabulary range. </h6>
+                <form class="form-align-left">
+                  <div class="form-group">
+                    <!-- <label for="question-type">Question Type</label> -->
+                    <select class="" id="question-type">
+                      <option value="select">Question Type</option>
+                      <option value="type1">Comprehension</option>
+                      <option value="type2">Vocabulary</option>
+                      <option value="type3">Grammar</option>
+                    </select>
+                    &emsp;
+                    <select class="" id="question-genre">
 
-          <div class="dropdown2">
-            <button onclick="myFunction2()" class="dropbtn2">Allowed Cumulative Vocabulary</button>
-            <div id="myDropdown2" class="dropdown-content2">
-              <input type="text" placeholder="Search.." id="myInput2" onkeyup="filterFunction2()">
-            </div>
-            </div>
-        </h4>
-      </div>
+                      <option value="choose">Question Genre</option>
+                      <option value="genre1">Politics</option>
+                      <option value="genre2">Sports</option>
+                      <option value="genre3">Science</option>
+                      <option value="genre4">Entertainment</option>
+                      <option value="genre5">World</option>
+                      <option value="genre6">Nation</option>
+                      <option value="genre7">Politics</option>
+                      <option value="genre8">Business and Commerce</option>
+                      <option value="genre9">Tech</option>
+                      <option value="genre10">Lifestyle</option>
+                      <option value="genre11">Others</option>
 
-      </div>
-      <div class="ques-add">
-          <h3> Add Question </h3>
-          <h6> Choose level and then make question in respective readability and vocabulary range. </h6>
-          <form class="form-align-left">
-            <div class="form-group">
-              <!-- <label for="question-type">Question Type</label> -->
-              <select class="" id="question-type">
-                <option value="select">Question Type</option>
-                <option value="type1">Comprehension</option>
-                <option value="type2">Vocabulary</option>
-                <option value="type3">Grammar</option>
-              </select>
-              &emsp;
-              <select class="" id="question-genre">
-
-                <option value="choose">Question Genre</option>
-                <option value="genre1">Politics</option>
-                <option value="genre2">Sports</option>
-                <option value="genre3">Science</option>
-                <option value="genre4">Entertainment</option>
-                <option value="genre5">World</option>
-                <option value="genre6">Nation</option>
-                <option value="genre7">Politics</option>
-                <option value="genre8">Business and Commerce</option>
-                <option value="genre9">Tech</option>
-                <option value="genre10">Lifestyle</option>
-                <option value="genre11">Others</option>
-
-              </select>
-              <br>
-              <br>
-              <!-- <label for="question-text">Question text:</label> -->
-              <textarea class="form-control" placeholder="Question text .." rows="2" id="question-text"></textarea>
-                <br>
-              <!-- <br>
-              <label for="question-choice1">Choice 1:</label> -->
-              <textarea class="form-control" placeholder="Choice 1 .." rows="1" id="question-choice1"></textarea>
-              <br>
-              <!-- <br>
-              <label for="question-choice2">Choice 2:</label> -->
-              <textarea class="form-control" placeholder="Choice 2 .." rows="1" id="question-choice2"></textarea>
-              <br>
-              <!-- <br>
-              <label for="question-choice3">Choice 3:</label> -->
-              <textarea class="form-control" placeholder="Choice 3 .." rows="1" id="question-choice3"></textarea>
-              <br>
-              <!-- <br>
-              <label for="question-choice4">Choice 4:</label> -->
-              <textarea class="form-control" placeholder="Choice 4 .." rows="1" id="question-choice4"></textarea>
-              <br>
-              <!-- <label for="option-sele">Correct Answer:</label>
-              <br> -->
-              <select class="option-sele" id="option-sele">
-                <option value="select">Correct Answer</option>
-                <option value="choice1">Choice 1</option>
-                <option value="choice2">Choice 2</option>
-                <option value="choice3">Choice 3</option>
-                <option value="choice4">Choice 4</option>
-              </select>
-            </div>
-          </form>
-          <button type="submit" id="sub-button"  class="btn">Submit</button>
-      </div>
-
-
-      <div class="ques-edit">
-        <h3> Edit Question </h3>
-        <div class='question_view'>
-          <h4 id="level_ques_edit">Question 1 From Level 1 </h4>
-          <form class="form-align-left">
-            <div class="form-group">
-              <label for="question-text">Question text:</label>
-              <p class='question-edit-text' contenteditable="true">
-                The race for Fortis Healthcare Limited has intensified with the company receiving an unsolicited non-binding expression of interest from Fosun Health Holdings Limited, a wholly-owned subsidiary of Fosun International Limited.
-              </p>
-              <label for="question-text">Choice 1:</label>
-              <p class='question-edit-text' contenteditable="true">
-                Limited
-              </p>
-              <label for="question-text">Choice 2:</label>
-              <p class='question-edit-text' contenteditable="true">
-                Healthcare
-              </p>
-              <label for="question-text">Choice 3:</label>
-              <p class='question-edit-text' contenteditable="true">
-                receiving
-              </p>
-              <label for="question-text">Choice 4:</label>
-              <p class='question-edit-text' contenteditable="true">
-                expression
-              </p>
-              <label for="question-text">Correct Answer:</label>
-              <p>
-              <select id="vocab-sele">
-                <option value="choice1">Choice 1</option>
-                <option value="choice2">Choice 2</option>
-                <option value="choice3">Choice 3</option>
-                <option value="choice4">Choice 4</option>
-              </select>
-            </p>
-
-
-            </div>
-          </form>
-
-        </div>
-      </div>
-      <div class="ques_analytics">
-        <table id="myTable">
-          <tr id="header_row">
-            <th>Level</th>
-            <th>Comprehension</th>
-            <th>Vocabulary</th>
-            <th>Grammar</th>
-            <th>Total</th>
-          </tr>
-        </table>
-
-      </div>
-
-
-      <!-- The Modal -->
-      <div class="modal fade" id="myModal">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-
-            <!-- Modal Header -->
-            <div class="modal-header">
-              <h4 class="modal-title">Modal Heading</h4>
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </select>
+                    <br>
+                    <br>
+                    <!-- <label for="question-text">Question text:</label> -->
+                    <textarea class="form-control" placeholder="Question text .." rows="2" id="question-text"></textarea>
+                      <br>
+                    <!-- <br>
+                    <label for="question-choice1">Choice 1:</label> -->
+                    <textarea class="form-control" placeholder="Choice 1 .." rows="1" id="question-choice1"></textarea>
+                    <br>
+                    <!-- <br>
+                    <label for="question-choice2">Choice 2:</label> -->
+                    <textarea class="form-control" placeholder="Choice 2 .." rows="1" id="question-choice2"></textarea>
+                    <br>
+                    <!-- <br>
+                    <label for="question-choice3">Choice 3:</label> -->
+                    <textarea class="form-control" placeholder="Choice 3 .." rows="1" id="question-choice3"></textarea>
+                    <br>
+                    <!-- <br>
+                    <label for="question-choice4">Choice 4:</label> -->
+                    <textarea class="form-control" placeholder="Choice 4 .." rows="1" id="question-choice4"></textarea>
+                    <br>
+                    <!-- <label for="option-sele">Correct Answer:</label>
+                    <br> -->
+                    <select class="option-sele" id="option-sele">
+                      <option value="select">Correct Answer</option>
+                      <option value="choice1">Choice 1</option>
+                      <option value="choice2">Choice 2</option>
+                      <option value="choice3">Choice 3</option>
+                      <option value="choice4">Choice 4</option>
+                    </select>
+                  </div>
+                </form>
+                <button type="submit" id="sub-button"  class="btn">Submit</button>
             </div>
 
-            <!-- Modal body -->
-            <div class="modal-body">
-              Modal body..
-            </div>
 
-            <!-- Modal footer -->
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
+    </div>
 
+    <div class="ques_analytics">
+      <table id="myTable">
+        <tr id="header_row">
+          <th>Level</th>
+          <th>Comp</th>
+          <th>Vocab</th>
+          <th>Grammar</th>
+          <th>Total</th>
+        </tr>
+      </table>
+    </div>
+
+
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Modal Heading</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            Modal body..
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+
         </div>
       </div>
-
     </div>
     <script>
     /* When the user clicks on the button,
