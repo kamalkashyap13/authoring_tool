@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Level(models.Model):
@@ -16,6 +17,7 @@ class LevelWords(models.Model):
 
 
 class LevelQuestion(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     comprehension = 1
     vocabulary = 2
     grammar = 3
@@ -48,6 +50,6 @@ class LevelQuestion(models.Model):
     choice4 = models.TextField()
     correct = models.IntegerField() #1,2,3,4
     feedback = models.TextField(blank=True)
-    date = models.DateField()
-    contact_time = models.TimeField( auto_now_add=True, blank=True)
+    #date = models.DateField()
+    contact_time = models.TimeField( auto_now_add=True, blank=True, null=True,)
     #modified_date = models.DateField(blank=True)

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.template import loader
 from django.http import HttpResponse, JsonResponse
 from .models import Level, LevelWords, LevelQuestion
@@ -12,10 +12,12 @@ today = datetime.date.today()
 
 
 def index(request):
+    if request.user.id is None:
+        return redirect("/accounts/signup/")
     template = loader.get_template('questions/index.html')
     level_detail = Level.objects.all()
     vocab_detail = LevelWords.objects.all()
-    ques_detail = LevelQuestion.objects.all().order_by('contact_time')
+    ques_detail = LevelQuestion.objects.filter(user=request.user).order_by('contact_time') #.filter(topic='1')
     #  {"a":{"b":"EE"} }
     level_dict = {}
     vocab_dict = {}
@@ -152,6 +154,12 @@ def question_add(request):
                                      "body":"Please check the question content again."},
                                     safe=False)
 
+def profile(request):
+    context = {}
+    if request.user.id is None:
+        return redirect("/accounts/signup/")
+    else:
+        return redirect("/questions/")
 # immediate -
 # forbidden
 # all_questions vs Dash
