@@ -615,7 +615,6 @@ tr:nth-child(even) {
                       <option value="genre4">Entertainment</option>
                       <option value="genre5">World</option>
                       <option value="genre6">Nation</option>
-                      <option value="genre7">Politics</option>
                       <option value="genre8">Business and Commerce</option>
                       <option value="genre9">Tech</option>
                       <option value="genre10">Lifestyle</option>
@@ -741,6 +740,9 @@ tr:nth-child(even) {
     all_ques ={{all_ques | safe}};
     levels_keys = Object.keys(level_range_detail).sort(sortAlphaNum);
     ques_keys = Object.keys(all_ques).sort(sortAlphaNum);
+    total_cat = ["except","Comprehension","Vocabulary","Grammar"]
+    total_gen = ["except","Politics","Sports","Science","Entertainment","World","Nation","Environment","Business","Tech","Lifestyle","Others"]
+
 
     window.onload = function () {
         fillltable();
@@ -974,7 +976,18 @@ tr:nth-child(even) {
                   level_ques_detail[selectedText]+=1
                   var all_level_ques_no = level_ques_detail[selectedText];
                   $("#level_question_added").text(all_level_ques_no);
+                  //ques_keys
+                  //all_ques
                   //level_ques_all_detail["Level 1"]
+                  var curr_que_length = ques_keys.length + 1;
+                  var curr_que_name = 'Question' + curr_que_length;
+                  ques_keys.push(curr_que_name);
+                  var current_level_name = "Level " + level_no
+                  var curr_type_no = parseInt(question_type.slice(4));
+                  var curr_genre_no = parseInt(question_genre.slice(5));
+                  all_ques[curr_que_name] = [curr_que_length, current_level_name, total_cat[curr_type_no], total_gen[curr_genre_no], question_txt];
+
+                  //
                   if (question_type=="type1"){
                     level_ques_all_detail[selectedText][0] +=1
                     level_ques_all_detail[selectedText][3] +=1

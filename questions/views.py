@@ -119,6 +119,8 @@ def question_add(request):
         score = textstat.flesch_reading_ease(question_txt)
         # print (question_txt)
         # print (score)
+        error_low_msg = "Readability score is less than permissible, " + str(score) + ". "
+        error_high_msg = "Readability score is higher than permissible, " + str(score) + ". "
         text_with_pos_tag = nltk.word_tokenize(question_txt)
         question_all_vocab = nltk.pos_tag(text_with_pos_tag)
         question_vocab = []
@@ -131,15 +133,19 @@ def question_add(request):
         all_vocab = all_vocab + cumulative_vocab
         for wor in question_vocab:
             if wor not in all_vocab:
-                return JsonResponse({"main": "Question has not been added.", "body": "Please change this word " + wor}, safe=False)
+                return JsonResponse({"main": "Question has not been added.", "body": "Please change this word '" + wor + "'"}, safe=False)
         if score < level_low:
             return JsonResponse({"main": "Question has not been added.",
-                                 "body": "Readability score is less than permissible" },
+                                 "body": error_low_msg},
+                                safe=False)
+        if score > level_high:
+            return JsonResponse({"main": "Question has not been added.",
+                                 "body": error_high_msg},
                                 safe=False)
         try:
-            LevelQuestion.objects.create(question_category=question_type, question_genre=question_genre, level=level_detail, question_inst=question_inst, question_text=question_txt, choice1=option1,
+            LevelQuestion.objects.create(user=request.user, question_category=question_type, question_genre=question_genre, level=level_detail, question_inst=question_inst, question_text=question_txt, choice1=option1,
                                          choice2=option2, choice3=option3, choice4=option4,
-                                         correct=option_choice, feedback="",date=today
+                                         correct=option_choice, feedback="",
                                          )
 
             return JsonResponse({"main": "Question has been added.", "body": question_content}, safe=False)
