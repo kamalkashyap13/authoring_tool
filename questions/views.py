@@ -15,12 +15,13 @@ def index(request):
     template = loader.get_template('questions/index.html')
     level_detail = Level.objects.all()
     vocab_detail = LevelWords.objects.all()
-    ques_detail = LevelQuestion.objects.all()
+    ques_detail = LevelQuestion.objects.all().order_by('contact_time')
     #  {"a":{"b":"EE"} }
     level_dict = {}
     vocab_dict = {}
     ques_dict = {}
     ques_all_dict = {}
+    all_ques = {}
     for i in range(len(level_detail)):
         level_no = level_detail[i].levels
         level_low = level_detail[i].reading_range_low
@@ -40,12 +41,24 @@ def index(request):
         vocab_dict[level_name].append(word)
 
     for i in range(len(ques_detail)):
+        # print(ques_detail[i].question_text)
+        # print(ques_detail[i].contact_time)
         level_no = ques_detail[i].level.levels
         question_type = ques_detail[i].question_category
         level_name = "Level " + str(level_no)
         ques_dict[level_name] += 1
         ques_all_dict[level_name][3] += 1
         ques_all_dict["Total"][3] += 1
+        #
+        cat = ["except","Comprehension","Vocabulary","Grammar"]
+        gen = ["except","Politics","Sports","Science","Entertainment","World","Nation","Environment","Business","Tech","Lifestyle","Others"]
+        #
+        ind = i+1
+        level_name = "Level " + str(ques_detail[i].level.levels)
+        sub_skill = cat[int(ques_detail[i].question_category)]
+        genre = gen[int(ques_detail[i].question_genre)]
+        text = ques_detail[i].question_text
+        all_ques["Question"+ str(ind)] = [ind, level_name, sub_skill, genre, text]
         if question_type == 1:
             ques_all_dict[level_name][0] += 1
             ques_all_dict["Total"][0] += 1
@@ -55,12 +68,13 @@ def index(request):
         else:
             ques_all_dict[level_name][2] += 1
             ques_all_dict["Total"][2] += 1
-
+    print (all_ques)
     context = {
         'level_range_detail': level_dict,
         'level_vocab_detail': vocab_dict,
         'level_ques_detail': ques_dict,
-        'level_ques_all_detail':ques_all_dict
+        'level_ques_all_detail':ques_all_dict,
+        'all_ques':all_ques
     }
     return HttpResponse(template.render(context, request))
 
@@ -77,6 +91,7 @@ def question_add(request):
     if request.method == 'POST':
         question_type = int(request.POST.get('question_type')[4])
         question_genre = int(request.POST.get('question_genre')[5])
+        question_inst = request.POST.get('question_inst').strip()
         question_txt = request.POST.get('question_txt').strip()
         question_content = question_txt
         option1 = request.POST.get('option1')
@@ -84,6 +99,7 @@ def question_add(request):
         option3 = request.POST.get('option3')
         option4 = request.POST.get('option4')
         option_choice = int(request.POST.get('option_choice'))
+        print(request.POST.get('level_no'))
         level_no = int(request.POST.get('level_no'))
         level_detail = Level.objects.filter(Q(levels=level_no))[0]
         vocab_detail = LevelWords.objects.filter(Q(level=level_detail))
@@ -119,7 +135,7 @@ def question_add(request):
                                  "body": "Readability score is less than permissible" },
                                 safe=False)
         try:
-            LevelQuestion.objects.create(question_category=question_type, question_genre=question_genre, level=level_detail,question_text=question_txt, choice1=option1,
+            LevelQuestion.objects.create(question_category=question_type, question_genre=question_genre, level=level_detail, question_inst=question_inst, question_text=question_txt, choice1=option1,
                                          choice2=option2, choice3=option3, choice4=option4,
                                          correct=option_choice, feedback="",date=today
                                          )
@@ -136,8 +152,9 @@ def question_add(request):
                                      "body":"Please check the question content again."},
                                     safe=False)
 
-#immediate -
-# unique error, forbidden
+# immediate -
+# forbidden
+# all_questions vs Dash
 #data
 
 
@@ -146,22 +163,12 @@ def question_add(request):
 #add webserver - nginx, ?, mysql
 #move to spacy, move to new ec2 instance, 16.04
 # create data
+#change questiion detail
 
 #https://courses.edx.org/courses/course-v1:Microsoft+DEV287x+1T2018a/course/ - coursera Ml
 #https
 
 
-
-        #nlp = en_core_web_sm.load()
-        #doc = nlp(question_txt)
-        # question_vocab = question_txt.lower().strip().split()
-        # for token in doc:
-        #     if token.pos_ in ["VERB","NOUN","ADJ","ADV"]:
-        #         lem = token.lemma_.lower()
-        #         if lem in all_vocab:
-        #             good=1
-        #         else:
-        #             return JsonResponse({"score": 1,"word":lem}, safe=False)
 
 # verify, show error  - dependency - django 2.4, pip install textstat, spacy
 # pip install -U spacy, python -m spacy download en
@@ -173,3 +180,8 @@ def question_add(request):
 
 
 #move to react
+
+
+
+# grammar - she?
+# comprehension - ????

@@ -40,6 +40,7 @@ class LevelQuestion(models.Model):
     level = models.ForeignKey(Level, on_delete=models.CASCADE, )
     question_category = models.IntegerField(choices=type_field)
     question_genre = models.IntegerField(choices=genre_field)
+    question_inst = models.TextField()
     question_text = models.TextField(unique=True)  # only noun, verb, adjective, adverb
     choice1 = models.TextField()
     choice2 = models.TextField()
@@ -48,4 +49,5 @@ class LevelQuestion(models.Model):
     correct = models.IntegerField() #1,2,3,4
     feedback = models.TextField(blank=True)
     date = models.DateField()
+    contact_time = models.TimeField( auto_now_add=True, blank=True)
     #modified_date = models.DateField(blank=True)
