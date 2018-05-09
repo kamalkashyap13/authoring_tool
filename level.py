@@ -4,7 +4,7 @@ from sqlite3 import OperationalError
 conn = sqlite3.connect("db.sqlite3")
 cursor = conn.cursor()
 
-file = open('levels.csv', "rt")
+file = open('new-level.csv', "rt")
 read = csv.reader(file)
 i = 1
 for row in read:

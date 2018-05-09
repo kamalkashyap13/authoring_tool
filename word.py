@@ -13,7 +13,7 @@ for row in read:
     cursor.execute(ro)
     conn.commit()
     i += 1
-    level = 1 + i//400
+    level = 1 + i//625
 
 #type of errors
 # comma
