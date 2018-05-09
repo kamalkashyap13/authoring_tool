@@ -8,6 +8,8 @@ from django.db import IntegrityError
 #import en_core_web_sm
 from textstat.textstat import textstat
 import datetime
+from nltk.stem.wordnet import WordNetLemmatizer
+
 today = datetime.date.today()
 
 
@@ -91,6 +93,7 @@ def sample(request):
 
 def question_add(request):
     if request.method == 'POST':
+        lmtzr = WordNetLemmatizer()
         question_type = int(request.POST.get('question_type')[4])
         question_genre = int(request.POST.get('question_genre')[5])
         question_inst = request.POST.get('question_inst').strip()
@@ -128,8 +131,15 @@ def question_add(request):
             # print (question_all_vocab)
             word = question_all_vocab[i][0]
             pos_tag = question_all_vocab[i][1]
-            if pos_tag in ["JJ","JJR","JJS","NN","NNS","RB","RBR","VB","VBD","VBG","VBZ"]:
-                question_vocab.append(word.lower())
+            if pos_tag in ["JJ","JJR","JJS","NN","NNS","RB","RBR","VB","VBD","VBG","VBZ","VBN","VBP"]:
+                if word not in ["is","am","are","has","have","had","was","were","did","does","will","shall","may","might"]:
+                    if pos_tag in ["NN","NNS"]:
+                        added_word = lmtzr.lemmatize(word.lower(),'n')
+                        question_vocab.append(added_word)
+                    elif pos_tag in ["VB","VBD","VBG","VBZ","VBN","VBP"]:
+                        added_word = lmtzr.lemmatize(word.lower(), 'v')
+                        question_vocab.append(added_word)
+
         all_vocab = all_vocab + cumulative_vocab
         for wor in question_vocab:
             if wor not in all_vocab:
