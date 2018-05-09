@@ -83,6 +83,15 @@ def index(request):
     return HttpResponse(template.render(context, request))
 
 
+def test_video(request):
+    template = loader.get_template('questions/test_video.html')
+    context = {
+        "a": 1
+    }
+    return HttpResponse(template.render(context, request))
+
+
+
 def sample(request):
     template = loader.get_template('questions/index.html')
     context = {

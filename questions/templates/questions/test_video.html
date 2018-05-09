@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.WebRTC-Experiment.com/RecordRTC.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+  <style>
+    .main-head, .main-body, .main-video{
+      text-align: center;
+    }
+    .button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.stop-end{
+  background-color: red;
+}
+
+  </style>
+</head>
+<body>
+  <div class="main-head">
+    <h2>After the Tripura setback</h2>
+    <p>Instruction - Please summarize the article in 1 minute </p>
+</div>
+<div class="main-body">
+  <a href="#" class="button" id="start_button" onclick="Recording(event)">Activity Start</a>
+  <a href="#" class="button stop-end" id="ddsfds" onclick="StopRecording(event)">Activity End</a>
+  <br>  <br>
+<span class="time" id="time"> Time elasped: 0 minutes and 0 seconds</span>
+
+</div>
+
+<div class="main-video">
+  <video id="your-video-id" controls="" autoplay=""></video>
+</div>
+<script >
+a=[]
+var myVar;
+var camera_stream;
+final_transcript = '';
+
+$("#your-video-id").hide();
+$("#time").hide();
+
+if (!('webkitSpeechRecognition' in window)) {
+alert("Upgrade your browser or user Chrome")
+}
+else {
+  var recognition = new webkitSpeechRecognition();
+  recognition.continuous = true;
+  recognition.interimResults = true;
+
+}
+recognition.onresult = function(event) {
+  for (var i = event.resultIndex; i < event.results.length; ++i) {
+
+    if (event.results[i].isFinal) {
+      final_transcript += event.results[i][0].transcript;
+    }
+  }
+
+}
+recognition.onend = function(event) {
+    bb = event;
+};
+function Recording(event) {
+
+  final_transcript = '';
+  recognition.lang = 'en-US';//en-US, en-IN
+  recognition.start();
+  recordvideo();
+  $("#your-video-id").show();
+  // $("#time").show();
+  // startTime = new Date();
+  // setTimeout(display, 1000);
+
+}
+
+function StopRecording(event){
+    record_video();
+    //
+
+
+}
+
+</script>
+<script type="text/javascript">
+ // record start time
+ // startTime = new Date();
+ // setTimeout(display, 1000);
+ // var startTime;
+
+function display() {
+   // later record end time
+   var endTime = new Date();
+
+   // time difference in ms
+   var timeDiff = endTime - startTime;
+
+   // strip the miliseconds
+   timeDiff /= 1000;
+
+   // get seconds
+   var seconds = Math.round(timeDiff % 60);
+
+   // remove seconds from the date
+   timeDiff = Math.floor(timeDiff / 60);
+
+   // get minutes
+   var minutes = Math.round(timeDiff);
+
+   // remove minutes from the date
+   timeDiff = Math.floor(timeDiff / 60);
+
+   // get hours
+   var hours = Math.round(timeDiff % 24);
+
+   // remove hours from the date
+   timeDiff = Math.floor(timeDiff / 24);
+
+   // the rest of timeDiff is number of days
+   var days = timeDiff;
+
+   document.getElementById('time').innerHTML="Time elasped: "+minutes +" minutes"+ " and " + seconds+" seconds";
+   //time.innerHTML="Time elasped: "+minutes +" minutes"+ " and " + seconds+" seconds";
+   //time.innerHTML("Time elasped: "+minutes +" minutes"+ " and " + seconds+" seconds");
+   //setTimeout(display, 1000);
+   myFunction()
+ }
+
+ function myFunction() {
+     myVar = setTimeout(display, 1000);
+ }
+ function myStopFunction() {
+    clearTimeout(myVar);
+}
+
+</script>
+
+
+<script type="text/javascript">
+    // capture camera and/or microphone
+    function recordvideo() {
+    navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(function(camera) {
+        camera_stream = camera;
+        // preview camera during recording
+        document.getElementById('your-video-id').muted = true;
+        document.getElementById('your-video-id').srcObject = camera;
+
+        // recording configuration/hints/parameters
+        var recordingHints = {
+            type: 'video'
+        };
+
+        // initiating the recorder
+        recorder = RecordRTC(camera, recordingHints);
+
+        // starting recording here
+        recorder.startRecording();
+        //
+        $("#time").show();
+        startTime = new Date();
+        setTimeout(display, 1000);
+
+        //
+        // auto stop recording after 5 seconds
+        var milliSeconds = 60 * 1000;
+        //recoding
+        setTimeout(record_video, milliSeconds);
+
+    })
+    .catch(function(err) {
+  /* handle the error */
+alert("user  dennied")
+        });
+  }
+
+
+
+
+  //
+
+
+  function record_video() {
+    recognition.stop();
+
+    clearTimeout(myVar);
+    // document.getElementById('time').innerHTML="Start Again";
+    setTimeout(function() {
+  //your code to be executed after 1 second
+  document.getElementById('time').innerHTML="Start Again";
+}, 1000);
+
+
+      // stop recording
+      recorder.stopRecording(function() {
+
+          // get recorded blob
+          blob = recorder.getBlob();
+
+          // open recorded blob in a new window
+        window.open( URL.createObjectURL(blob) );
+
+          // release camera
+          document.getElementById('your-video-id').srcObject = null;
+          camera_stream.getTracks().forEach(function(track) {
+             tracked = track;
+              track.stop();
+          });
+
+          // you can preview recorded data on this page as well
+          document.getElementById('your-video-id').src = URL.createObjectURL(blob);
+          video = URL.createObjectURL(blob);
+
+      });
+
+  }
+
+// var myBlob = ...;
+// var blobUrl = URL.createObjectURL(myBlob);
+//   var link = document.createElement("a"); // Or maybe get it from the current document
+// link.href = blobUrl;
+// link.download = "aDefaultFileName.txt";
+// link.innerHTML = "Click here to download the file";
+// document.body.appendChild(link);
+
+// function download() {
+//   var blob = new Blob(recordedChunks, {
+//     type: 'video/webm'
+//   });
+//   var url = URL.createObjectURL(blob);
+//   var a = document.createElement('a');
+//   document.body.appendChild(a);
+//   a.style = 'display: none';
+//   a.href = url;
+//   a.download = 'test.webm';
+//   a.click(
+//   //https://developers.google.com/web/updates/2016/01/mediarecorder);
+//   window.URL.revokeObjectURL(url);
+// }
+//https://developers.google.com/web/updates/2016/01/mediarecorder
+// from PyPDF2 import PdfFileWriter, PdfFileReader
+// >>> output = PdfFileWriter()
+// >>> input1 = PdfFileReader(open("hindu.pdf", "rb"))
+// >>> output.addPage(input1.getPage(0))
+// >>> outputStream = file("PyPDF2-output.pdf", "wb")
+// >>> output.write(outputStream)
+
+</script>
+</body>
+</html>
