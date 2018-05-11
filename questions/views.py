@@ -170,7 +170,11 @@ def question_add(request):
                                 safe=False)
         for wor in question_vocab:
             if wor not in all_vocab:
-                LevelWords.objects.create(user=request.user, word=wor, level=level_detail)
+                try:
+                    LevelWords.objects.create(user=request.user, word=wor, level=level_detail)
+                except IntegrityError as e:
+                    print("word error")
+                    pass
         try:
             LevelQuestion.objects.create(user=request.user, question_category=question_type, question_genre=question_genre, level=level_detail, question_inst=question_inst, question_text=question_txt, choice1=option1,
                                          choice2=option2, choice3=option3, choice4=option4,
@@ -198,6 +202,7 @@ def profile(request):
     else:
         return redirect("/questions/")
 # immediate -
+# word added already there but with higher levell
 # forbidden
 # all_questions vs Dash
 #data

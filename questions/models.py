@@ -44,7 +44,7 @@ class LevelQuestion(models.Model):
     question_category = models.IntegerField(choices=type_field)
     question_genre = models.IntegerField(choices=genre_field)
     question_inst = models.TextField()
-    question_text = models.TextField(unique=True)  # only noun, verb, adjective, adverb
+    question_text = models.TextField()#unique=True)  # only noun, verb, adjective, adverb
     choice1 = models.TextField()
     choice2 = models.TextField()
     choice3 = models.TextField()
