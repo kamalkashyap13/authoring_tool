@@ -14,6 +14,7 @@ class Level(models.Model):
 class LevelWords(models.Model):
     level = models.ForeignKey(Level, on_delete=models.CASCADE,)
     word = models.TextField(unique=True)  # only noun, verb, adjective, adverb
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
 class LevelQuestion(models.Model):
@@ -49,6 +50,12 @@ class LevelQuestion(models.Model):
     choice3 = models.TextField()
     choice4 = models.TextField()
     correct = models.IntegerField() #1,2,3,4
+    que_format = models.TextField(blank=True)
+    source = models.TextField(blank=True)
+    concept = models.TextField(blank=True)
+    sub_concept = models.TextField(blank=True)
+    difficulty = models.TextField(blank=True)
+    mark = models.TextField(blank=True)
     feedback = models.TextField(blank=True)
     #date = models.DateField()
     contact_time = models.TimeField( auto_now_add=True, blank=True, null=True,)

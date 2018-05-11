@@ -640,9 +640,21 @@ tr:nth-child(even) {
                     <label for="question-choice3">Choice 3:</label> -->
                     <textarea class="form-control" placeholder="Choice 3 .." rows="1" id="question-choice3"></textarea>
                     <br>
-                    <!-- <br>
+                    <!-- <brquestion-que-type>
                     <label for="question-choice4">Choice 4:</label> -->
                     <textarea class="form-control" placeholder="Choice 4 .." rows="1" id="question-choice4"></textarea>
+                    <br>
+                    <textarea class="form-control" placeholder="Question type .." rows="1" id="question-que-type"></textarea>
+                    <br>
+                    <textarea class="form-control" placeholder="Source .." rows="1" id="question-source"></textarea>
+                    <br>
+                    <textarea class="form-control" placeholder="Concept .." rows="1" id="question-concept"></textarea>
+                    <br>
+                    <textarea class="form-control" placeholder="Sub-Concept .." rows="1" id="question-sub"></textarea>
+                    <br>
+                    <textarea class="form-control" placeholder="Difficulty level .." rows="1" id="question-diff"></textarea>
+                    <br>
+                    <textarea class="form-control" placeholder="Difficulty Mark .." rows="1" id="question-mark"></textarea>
                     <br>
                     <!-- <label for="option-sele">Correct Answer:</label>
                     <br> -->
@@ -754,7 +766,7 @@ tr:nth-child(even) {
           select.add(option);
         }
         var option = document.createElement('option');
-        option.text = option.value = "Question Analytics"; //All Questions
+        option.text = option.value = "Question Analytics"; //All Questions, question-que-type
         select.add(option);
 
         var option = document.createElement('option');
@@ -824,6 +836,13 @@ tr:nth-child(even) {
                 var question_level = $("#outer").val();
                 var level_no = selectedVal.slice(6);
                 //
+                var que_format = $("#question-que-type").val();
+                var source = $("#question-source").val();
+                var concept = $("#question-concept").val();
+                var sub_concept =  $("#question-sub").val();
+                var difficulty = $("#question-diff").val();
+                var mark = $("#question-mark").val();
+
                 //$("#"+clean[1]).css("background-color", "white");
                 //
                 remove_background(clean[1]);
@@ -835,7 +854,7 @@ tr:nth-child(even) {
                   $("#myModal").modal()
                 }
                 else{
-                    a = save_question(question_type, question_genre, question_inst, question_txt, option1, option2, option3, option4, option_choice, level_no);
+                    a = save_question(question_type, question_genre, question_inst, question_txt, option1, option2, option3, option4, option_choice, level_no, que_format, source, concept, sub_concept, difficulty, mark);
                 }
                 //backendquery
 
@@ -942,7 +961,7 @@ tr:nth-child(even) {
  </script>
 
 <script>
-    function save_question(question_type, question_genre, question_inst, question_txt, option1, option2, option3, option4, option_choice, level_no) {
+    function save_question(question_type, question_genre, question_inst, question_txt, option1, option2, option3, option4, option_choice, level_no, que_format, source, concept, sub_concept, difficulty, mark) {
     		formdata=new FormData();
         formdata.append("question_type",question_type);
         formdata.append("question_genre",question_genre);
@@ -954,6 +973,15 @@ tr:nth-child(even) {
         formdata.append("option4",option4);
         formdata.append("option_choice",option_choice);
         formdata.append("level_no",level_no);
+        //
+        formdata.append("que_format",que_format);
+        formdata.append("source",source);
+        formdata.append("concept",concept);
+        formdata.append("sub_concept",sub_concept);
+        formdata.append("difficulty",difficulty);
+        formdata.append("mark",mark);
+
+
     			$.ajax({
 
 

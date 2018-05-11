@@ -113,8 +113,13 @@ def question_add(request):
         option3 = request.POST.get('option3')
         option4 = request.POST.get('option4')
         option_choice = int(request.POST.get('option_choice'))
-        print(request.POST.get('level_no'))
         level_no = int(request.POST.get('level_no'))
+        que_format = request.POST.get('que_format')
+        source = request.POST.get('source')
+        concept = request.POST.get('concept')
+        sub_concept = request.POST.get('sub_concept')
+        difficulty = request.POST.get('difficulty')
+        mark = request.POST.get('mark')
         level_detail = Level.objects.filter(Q(levels=level_no))[0]
         vocab_detail = LevelWords.objects.filter(Q(level=level_detail))
         all_vocab_detail = LevelWords.objects.filter(level__lt=level_detail)
@@ -150,9 +155,10 @@ def question_add(request):
                         question_vocab.append(added_word)
 
         all_vocab = all_vocab + cumulative_vocab
-        for wor in question_vocab:
-            if wor not in all_vocab:
-                return JsonResponse({"main": "Question has not been added.", "body": "Please change this word '" + wor + "'"}, safe=False)
+        # for wor in question_vocab:
+        #     if wor not in all_vocab:
+        #         return JsonResponse({"main": "Question has not been added.", "body": "Please change this word '" + wor + "'"}, safe=False)
+        #
         if score < level_low:
             return JsonResponse({"main": "Question has not been added.",
                                  "body": error_low_msg},
@@ -161,10 +167,15 @@ def question_add(request):
             return JsonResponse({"main": "Question has not been added.",
                                  "body": error_high_msg},
                                 safe=False)
+        for wor in question_vocab:
+            if wor not in all_vocab:
+                LevelWords.objects.create(user=request.user, word=wor, level=level_detail)
         try:
             LevelQuestion.objects.create(user=request.user, question_category=question_type, question_genre=question_genre, level=level_detail, question_inst=question_inst, question_text=question_txt, choice1=option1,
                                          choice2=option2, choice3=option3, choice4=option4,
-                                         correct=option_choice, feedback="",
+                                         correct=option_choice, feedback="",que_format=que_format,
+                                         source=source, concept=concept, sub_concept=sub_concept,
+                                         difficulty=difficulty, mark=mark
                                          )
 
             return JsonResponse({"main": "Question has been added.", "body": question_content}, safe=False)
