@@ -119,7 +119,8 @@ def question_add(request):
         concept = request.POST.get('concept')
         sub_concept = request.POST.get('sub_concept')
         difficulty = request.POST.get('difficulty')
-        mark = request.POST.get('mark')
+        mark = request.POST.get('mark')#
+        option_creat = request.POST.get('option_creat')
         level_detail = Level.objects.filter(Q(levels=level_no))[0]
         vocab_detail = LevelWords.objects.filter(Q(level=level_detail))
         all_vocab_detail = LevelWords.objects.filter(level__lt=level_detail)
@@ -175,7 +176,7 @@ def question_add(request):
                                          choice2=option2, choice3=option3, choice4=option4,
                                          correct=option_choice, feedback="",que_format=que_format,
                                          source=source, concept=concept, sub_concept=sub_concept,
-                                         difficulty=difficulty, mark=mark
+                                         difficulty=difficulty, mark=mark,option_creat=option_creat
                                          )
 
             return JsonResponse({"main": "Question has been added.", "body": question_content}, safe=False)

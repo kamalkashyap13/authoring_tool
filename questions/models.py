@@ -56,6 +56,7 @@ class LevelQuestion(models.Model):
     sub_concept = models.TextField(blank=True)
     difficulty = models.TextField(blank=True)
     mark = models.TextField(blank=True)
+    option_creat = models.TextField(blank=True)
     feedback = models.TextField(blank=True)
     #date = models.DateField()
     contact_time = models.TimeField( auto_now_add=True, blank=True, null=True,)

@@ -600,7 +600,7 @@ tr:nth-child(even) {
                   <div class="form-group">
                     <!-- <label for="question-type">Question Type</label> -->
                     <select class="" id="question-type">
-                      <option value="select">Question Type</option>
+                      <option value="select">Sub-skill</option>
                       <option value="type1">Comprehension</option>
                       <option value="type2">Vocabulary</option>
                       <option value="type3">Grammar</option>
@@ -621,7 +621,24 @@ tr:nth-child(even) {
                       <option value="genre11">Others</option>
 
                     </select>
+
+                    <select class="" id="question-que-type">
+
+                      <option value="MCQ">MCQ</option>
+                      <option value="FIB">FIB</option>
+                    </select>
+                    <!--<textarea class="form-control" placeholder="Question type .." rows="1" id="question-que-type"></textarea>-->
+                    <!--<br>-->
                     <br>
+                    <br>
+
+                     <textarea class="form-control" placeholder="Concept .." rows="1" id="question-concept"></textarea>
+                    <br>
+                    <textarea class="form-control" placeholder="Sub-Concept .." rows="1" id="question-sub"></textarea>
+                    <br>
+                    <textarea class="form-control" placeholder="Difficulty level .." rows="1" id="question-diff"></textarea>
+                    <br>
+                    <textarea class="form-control" placeholder="Marks .." rows="1" id="question-mark"></textarea>
                     <br>
                     <textarea class="form-control" placeholder="Question Instruction .." rows="2" id="question-inst"></textarea>
                       <br>
@@ -644,18 +661,7 @@ tr:nth-child(even) {
                     <label for="question-choice4">Choice 4:</label> -->
                     <textarea class="form-control" placeholder="Choice 4 .." rows="1" id="question-choice4"></textarea>
                     <br>
-                    <textarea class="form-control" placeholder="Question type .." rows="1" id="question-que-type"></textarea>
-                    <br>
-                    <textarea class="form-control" placeholder="Source .." rows="1" id="question-source"></textarea>
-                    <br>
-                    <textarea class="form-control" placeholder="Concept .." rows="1" id="question-concept"></textarea>
-                    <br>
-                    <textarea class="form-control" placeholder="Sub-Concept .." rows="1" id="question-sub"></textarea>
-                    <br>
-                    <textarea class="form-control" placeholder="Difficulty level .." rows="1" id="question-diff"></textarea>
-                    <br>
-                    <textarea class="form-control" placeholder="Difficulty Mark .." rows="1" id="question-mark"></textarea>
-                    <br>
+
                     <!-- <label for="option-sele">Correct Answer:</label>
                     <br> -->
                     <select class="option-sele" id="option-sele">
@@ -665,6 +671,14 @@ tr:nth-child(even) {
                       <option value="choice3">Choice 3</option>
                       <option value="choice4">Choice 4</option>
                     </select>
+                     <select class="option-sele" id="option-creat">
+                      <option value="self">Self Created </option>
+                      <option value="augli">Provided by Augli</option>
+                    </select>
+                    <br>
+                    <br>
+                    <textarea class="form-control" placeholder="Created form .." rows="1" id="question-source"></textarea>
+
                   </div>
                 </form>
                 <button type="submit" id="sub-button"  class="btn">Submit</button>
@@ -841,7 +855,8 @@ tr:nth-child(even) {
                 var concept = $("#question-concept").val();
                 var sub_concept =  $("#question-sub").val();
                 var difficulty = $("#question-diff").val();
-                var mark = $("#question-mark").val();
+                var mark = $("#question-mark").val(); //option-creat
+                var option_creat = $("#option-creat").val();
 
                 //$("#"+clean[1]).css("background-color", "white");
                 //
@@ -854,7 +869,7 @@ tr:nth-child(even) {
                   $("#myModal").modal()
                 }
                 else{
-                    a = save_question(question_type, question_genre, question_inst, question_txt, option1, option2, option3, option4, option_choice, level_no, que_format, source, concept, sub_concept, difficulty, mark);
+                    a = save_question(question_type, question_genre, question_inst, question_txt, option1, option2, option3, option4, option_choice, level_no, que_format, source, concept, sub_concept, difficulty, mark, option_creat);
                 }
                 //backendquery
 
@@ -961,7 +976,7 @@ tr:nth-child(even) {
  </script>
 
 <script>
-    function save_question(question_type, question_genre, question_inst, question_txt, option1, option2, option3, option4, option_choice, level_no, que_format, source, concept, sub_concept, difficulty, mark) {
+    function save_question(question_type, question_genre, question_inst, question_txt, option1, option2, option3, option4, option_choice, level_no, que_format, source, concept, sub_concept, difficulty, mark,option_creat) {
     		formdata=new FormData();
         formdata.append("question_type",question_type);
         formdata.append("question_genre",question_genre);
@@ -980,6 +995,7 @@ tr:nth-child(even) {
         formdata.append("sub_concept",sub_concept);
         formdata.append("difficulty",difficulty);
         formdata.append("mark",mark);
+        formdata.append("option_creat",option_creat);
 
 
     			$.ajax({
