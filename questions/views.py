@@ -381,18 +381,8 @@ def profile(request):
 
 
 
-#show - readiability score
-#clean form after submission
-
 
 #add data
-
-
-
-
-
-
-
 
 
 #can we add search option in admin
@@ -410,7 +400,7 @@ def profile(request):
 #add webserver - nginx, ?, mysql
 #move to spacy, move to new ec2 instance, 16.04
 # create data
-#change questiion detail
+#change question detail
 
 #https://courses.edx.org/courses/course-v1:Microsoft+DEV287x+1T2018a/course/ - coursera Ml
 #https

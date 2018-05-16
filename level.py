@@ -16,3 +16,4 @@ for row in read:
     # import sys
     #
     # print("\n".join(sys.argv))
+    #check does it take new serial no from begning

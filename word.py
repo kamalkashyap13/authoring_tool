@@ -9,7 +9,7 @@ read = csv.reader(file)
 i = 1
 level = 1
 for row in read:
-    ro = '''INSERT OR IGNORE INTO questions_levelwords VALUES (%d,'%s', %d, 1)''' % (i, row[0],level)
+    ro = '''INSERT OR IGNORE INTO questions_levelwords VALUES (%d, %d, 1, '%s')''' % (i, level, row[0])
     cursor.execute(ro)
     conn.commit()
     i += 1

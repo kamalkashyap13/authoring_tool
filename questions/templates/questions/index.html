@@ -800,7 +800,8 @@ tr:nth-child(even) {
         for(var i = 0; i < levels_keys.length; ++i) {
           levels_keys_name = levels_keys[i]
           var option = document.createElement('option');
-          option.text = option.value = levels_keys_name;
+          option.text =  levels_keys_name + ", R Range " + level_range_detail[levels_keys_name]["range"]//
+          option.value = levels_keys_name;
           select.add(option);
         }
         // var option = document.createElement('option');
@@ -857,10 +858,10 @@ tr:nth-child(even) {
       $(".ques_analytics").hide();
       $(".ques_all").hide();
       //$(".ques-add").hide();
-        $('#outer').change(function () {
-        v = $(this).val().slice(6)
-        $("#level_t").text("Level" + v)
-      })
+      //   $('#outer').change(function () {
+      //   v = $(this).val().slice(6)//
+      //   $("#level_t").text("Level" + v)
+      // })
           clean = ["Question Type","question-type"]
            $("#sub-button").on("click", function(){
                var level_no = $("#outer").val().slice(6);
@@ -937,7 +938,7 @@ tr:nth-child(even) {
               });
             $("#outer").change(function() {
                 selectedVal = this.value;
-                selectedText = this.options[this.selectedIndex].text;
+                selectedText =   this.value;  //this.options[this.selectedIndex].text;
                 $("#allow-vocab").empty();
 
                 if (selectedVal=="Question Analytics"){
@@ -1088,6 +1089,8 @@ tr:nth-child(even) {
                 fill_modal_data(main,body)
                 $("#myModal").modal()
                 if (main=="Question has been added."){
+                  $(".form-align-left")[0].reset();
+                  //clean the form
                   level_ques_detail[selectedText]+=1
                   var all_level_ques_no = level_ques_detail[selectedText];
                   $("#level_question_added").text(all_level_ques_no);
