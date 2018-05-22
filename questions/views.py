@@ -63,10 +63,10 @@ def index(request):
         ind = i+1
         level_name = "Level " + str(ques_detail[i].level.levels)
         sub_skill = ques_detail[i].question_category
-        genre = type_choice[int(ques_detail[i].question_genre)]
+        genre = gen[int(ques_detail[i].question_genre)]
 
         type1 = ques_detail[i].que_format
-        difficulty = cat[int(ques_detail[i].difficulty)]
+        difficulty = type_choice[int(ques_detail[i].difficulty)]
 
         concept = ques_detail[i].concept
         sub_concept = ques_detail[i].sub_concept
