@@ -56,12 +56,17 @@ def index(request):
         #
         cat = ["except", "Comprehension", "Vocabulary", "Grammar"]
         gen = ["except", "Politics", "Sports", "Science", "Entertainment", "World", "Nation", "Environment",
-               "Business", "Tech", "Lifestyle", "Others"]
+               "Business", "Tech", "Lifestyle", "Nature", "Leisure", "Travel", "Spiritual", "Fiction",# "Health care",
+               "Others"]
+        type_choice = ["","Low","Medium","High"]
         #
         ind = i+1
         level_name = "Level " + str(ques_detail[i].level.levels)
-        sub_skill = cat[int(ques_detail[i].question_category)]
-        genre = gen[int(ques_detail[i].question_genre)]
+        sub_skill = ques_detail[i].question_category
+        genre = type_choice[int(ques_detail[i].question_genre)]
+
+        type1 = ques_detail[i].que_format
+        difficulty = cat[int(ques_detail[i].difficulty)]
 
         concept = ques_detail[i].concept
         sub_concept = ques_detail[i].sub_concept
@@ -81,7 +86,9 @@ def index(request):
         source = ques_detail[i].source
         #
         #text = ques_detail[i].question_text
-        all_ques["Question" + str(ind)] = [ind, level_name, sub_skill, genre, concept,
+        all_ques["Question" + str(ind)] = [ind, level_name, sub_skill, genre,
+                                           type1, difficulty,
+                                           concept,
                                            sub_concept, question_inst, question_para,
                                            question_text, question_word,
                                            choice1, choice2, choice3, choice4, correct,

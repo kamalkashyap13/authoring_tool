@@ -721,6 +721,8 @@ tr:nth-child(even) {
           <th>Level</th>
           <th>Subskill</th>
           <th>Genre</th>
+          <th>Type</th>
+          <th>Difficulty</th>
           <th>Concept</th>
           <th>Sub concept</th>
           <th>Question Inst</th>
@@ -1345,6 +1347,16 @@ tr:nth-child(even) {
                var source = all_ques[que_name][16];
                var cell16 = row.insertCell(16);
                cell16.innerHTML = source;
+
+               var type1 = all_ques[que_name][17];
+               var cell17 = row.insertCell(17);
+               cell17.innerHTML = type1;
+
+               var difficulty1 = all_ques[que_name][18];
+               var cell18 = row.insertCell(18);
+               cell18.innerHTML = difficulty1;
+
+
 
 
 
