@@ -153,7 +153,7 @@ def question_add(request):
             vocab_detail = LevelWords.objects.filter(Q(level=level_detail))
             all_vocab_detail = LevelWords.objects.filter(level__lt=level_detail)
 
-            score = textstat.flesch_reading_ease(question_txt)
+            score = textstat.flesch_reading_ease(question_para)
             error_low_msg = "Readability score is less than permissible, " + str(score) + ". "
             error_high_msg = "Readability score is higher than permissible, " + str(score) + ". "
 
@@ -164,7 +164,7 @@ def question_add(request):
                 return JsonResponse({"main": "Question has not been added.",
                                      "body": error_low_msg},
                                     safe=False)
-            if score > level_high:
+            if score >= level_high:
                 return JsonResponse({"main": "Question has not been added.",
                                      "body": error_high_msg},
                                     safe=False)
