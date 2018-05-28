@@ -56,7 +56,7 @@ def index(request):
         #
         cat = ["except", "Comprehension", "Vocabulary", "Grammar"]
         gen = ["except", "Politics", "Sports", "Science", "Entertainment", "World", "Nation", "Environment",
-               "Business", "Tech", "Lifestyle", "Nature", "Leisure", "Travel", "Spiritual", "Fiction",# "Health care",
+               "Business", "Tech", "Lifestyle", "Nature", "Leisure", "Travel", "Spiritual", "Fiction",
                "Others"]
         type_choice = ["","Low","Medium","High"]
         #
@@ -389,13 +389,17 @@ def profile(request):
 
 
 
-#add data
+#immediate -
+
+
+
+
 
 
 #can we add search option in admin
 
 # readiability check only for para
-# immediate -
+#
 # word added already there but with higher levell
 # forbidden
 # all_questions vs Dash

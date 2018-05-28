@@ -419,7 +419,6 @@ option{
   table {
       font-family: arial, sans-serif;
       border-collapse: collapse;
-      width: 80% !important;
       font-size: 9px;
   }
   td, th {
@@ -526,9 +525,8 @@ h4  {
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 70%;
     margin: auto;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 td, th {
@@ -540,6 +538,8 @@ td, th {
 tr:nth-child(even) {
     background-color: #dddddd;
 }
+
+
 </style>
 </head>
 
@@ -615,6 +615,7 @@ tr:nth-child(even) {
                       <option value="genre4">Entertainment</option>
                       <option value="genre5">World</option>
                       <option value="genre6">Nation</option>
+                      <option value="genre7">Environment</option>
                       <option value="genre8">Business and Commerce</option>
                       <option value="genre9">Tech</option>
                       <option value="genre10">Lifestyle</option>
@@ -726,8 +727,8 @@ tr:nth-child(even) {
           <th>Concept</th>
           <th>Sub concept</th>
           <th>Question Inst</th>
-          <th>Question Paragraph</th>
-          <th>Question Text</th>
+          <th id="table_para">Question Paragraph</th>
+          <th id="">Question Text</th>
           <th>Question Word</th>
           <th>Choice 1</th>
           <th>Choice 2</th>

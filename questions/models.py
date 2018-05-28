@@ -53,6 +53,8 @@ class LevelQuestion(models.Model):
     spiritual = 14
     fiction = 15
     others = 16
+    healthcare = 17
+    space = 18
     genre_field = (('', '---------'), (politics, 'politics'),
                    (sports, 'sports'),
                    (science, 'science'), (entertainment, 'entertainment'), (world, 'world'), (nation, 'nation'),
@@ -67,7 +69,7 @@ class LevelQuestion(models.Model):
 
     question_category = models.IntegerField(choices=type_field)
     question_genre = models.IntegerField(choices=genre_field)
-    que_format = models.CharField(max_length=20,blank=True)
+    que_format = models.CharField(max_length=200,blank=True)
     low = 1
     medium = 2
     high = 3
@@ -76,13 +78,13 @@ class LevelQuestion(models.Model):
     difficulty = models.IntegerField(choices=diff_field)#1,2,3
 
     #
-    concept = models.CharField(max_length=20,blank=True)
-    sub_concept = models.CharField(max_length=20,blank=True)
+    concept = models.CharField(max_length=200,blank=True)
+    sub_concept = models.CharField(max_length=200,blank=True)
 
     question_inst = models.CharField(max_length=200,blank=True)
     question_para = models.TextField(blank=True)#empty for grammar, only noun, verb, adjective, adverb
     question_text = models.CharField(max_length=200,unique=True)
-    question_word = models.CharField(max_length=20, blank=True)
+    question_word = models.CharField(max_length=200, blank=True)
     #
     choice1 = models.CharField(max_length=200)
     choice2 = models.CharField(max_length=200)
@@ -91,10 +93,10 @@ class LevelQuestion(models.Model):
     correct = models.IntegerField()
 
     #
-    option_create = models.CharField(max_length=20, blank=True)
+    option_create = models.CharField(max_length=200, blank=True)
     source = models.CharField(max_length=200, blank=True)
     #
-    feedback = models.CharField(max_length=20,blank=True)
+    feedback = models.CharField(max_length=200,blank=True)
     contact_time = models.TimeField( auto_now_add=True, blank=True, null=True,)
 
     def __str__(self):
