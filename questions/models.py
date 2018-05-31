@@ -83,7 +83,7 @@ class LevelQuestion(models.Model):
 
     question_inst = models.CharField(max_length=200,blank=True)
     question_para = models.TextField(blank=True)#empty for grammar, only noun, verb, adjective, adverb
-    question_text = models.CharField(max_length=200,unique=True)
+    question_text = models.CharField(max_length=500,unique=True)
     question_word = models.CharField(max_length=200, blank=True)
     #
     choice1 = models.CharField(max_length=200)
